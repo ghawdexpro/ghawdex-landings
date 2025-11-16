@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Sun } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -36,16 +37,21 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
         <div className="text-center">
-          {/* Icon/Logo placeholder */}
+          {/* Logo */}
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center justify-center mb-8"
           >
-            <div className="p-4 bg-sky-500 rounded-2xl shadow-xl">
-              <Sun className="w-12 h-12 text-white" />
-            </div>
+            <Image
+              src="/logo/Ghawdex engineering logo.svg"
+              alt="Ghawdex Engineering"
+              width={200}
+              height={80}
+              priority
+              className="h-16 sm:h-20 w-auto"
+            />
           </motion.div>
 
           {/* Main headline */}

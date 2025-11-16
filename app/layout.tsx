@@ -23,11 +23,23 @@ export const metadata: Metadata = {
     url: "https://ghawdex.pro",
     siteName: "Ghawdex Solar",
     type: "website",
+    images: [
+      {
+        url: "/og/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ghawdex Solar Installation",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ghawdex | Solar Installation in 14 Days",
     description: "Professional solar energy solutions delivered fast. Expert installation across Malta.",
+    images: ["/og/og-image.png"],
+  },
+  icons: {
+    icon: "/icon.png",
   },
 };
 

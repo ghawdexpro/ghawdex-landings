@@ -1,6 +1,7 @@
 'use client';
 
-import { Sun, Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,11 +13,14 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-sky-600 rounded-lg">
-                <Sun className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold">Ghawdex</span>
+            <div className="flex items-center mb-6">
+              <Image
+                src="/logo/Ghawdex engineering logo.svg"
+                alt="Ghawdex Engineering"
+                width={180}
+                height={60}
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
               Professional solar energy solutions delivered in 14 days.
