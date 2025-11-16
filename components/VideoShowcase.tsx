@@ -5,8 +5,8 @@ import { useState, useRef, useEffect } from 'react';
 
 const videos = [
   '/projects/installation-showcase.mp4',
-  '/projects/installation-video-2.mov',
-  '/projects/installation-video-3.mov',
+  '/projects/installation-video-2.mp4',
+  '/projects/installation-video-3.mp4',
 ];
 
 export default function VideoShowcase() {
@@ -103,7 +103,7 @@ export default function VideoShowcase() {
             className="w-full h-auto block bg-black"
             style={{ aspectRatio: '16 / 9' }}
           >
-            <source src={videos[currentVideoIndex]} type={videos[currentVideoIndex].endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
+            <source src={videos[currentVideoIndex]} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
