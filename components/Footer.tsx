@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -98,8 +98,16 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <a href="tel:+356XXXXXXXX" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    +356 XXXX XXXX
+                  <a href="tel:+35679055156" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    +356 7905 5156
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <MessageCircle className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <a href="https://wa.me/35679055156" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+                    WhatsApp Chat
                   </a>
                 </div>
               </li>
