@@ -1,8 +1,31 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+
+const videos = [
+  '/projects/installation-showcase.mp4',
+  '/projects/installation-video-2.mov',
+  '/projects/installation-video-3.mov',
+];
 
 export default function VideoShowcase() {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoEnd = () => {
+    setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+  };
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.play().catch(() => {
+        // Autoplay might be blocked, that's okay
+      });
+    }
+  }, [currentVideoIndex]);
+
   return (
     <section className="relative w-full bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
       {/* Animated background elements */}
@@ -70,20 +93,37 @@ export default function VideoShowcase() {
         >
           {/* Video */}
           <video
+            ref={videoRef}
+            key={currentVideoIndex}
             autoPlay
             muted
-            loop
+            onEnded={handleVideoEnd}
             playsInline
             aria-label="Ghawdex solar installation showcase video"
             className="w-full h-auto block bg-black"
             style={{ aspectRatio: '16 / 9' }}
           >
-            <source src="/projects/installation-showcase.mp4" type="video/mp4" />
+            <source src={videos[currentVideoIndex]} type={videos[currentVideoIndex].endsWith('.mov') ? 'video/quicktime' : 'video/mp4'} />
             Your browser does not support the video tag.
           </video>
 
           {/* Optional gradient overlay on edges for sophistication */}
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl" />
+
+          {/* Video indicators */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+            {videos.map((_, index) => (
+              <motion.div
+                key={index}
+                className={`h-2 rounded-full transition-all ${
+                  index === currentVideoIndex ? 'w-8 bg-sky-400' : 'w-2 bg-gray-500'
+                }`}
+                animate={{
+                  opacity: index === currentVideoIndex ? 1 : 0.5,
+                }}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
