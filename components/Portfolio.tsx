@@ -4,60 +4,66 @@ import { motion } from 'framer-motion';
 import { Building2, Home, Factory, Award } from 'lucide-react';
 import Image from 'next/image';
 
-// Placeholder project data - replace with real projects
+// Real project data from GPS-tagged photos
 const projects = [
   {
     id: 1,
-    title: 'Residential Installation - Valletta',
+    title: 'Solar Installation - Rabat',
     category: 'Residential',
     icon: Home,
-    capacity: '8.5 kW',
-    panels: '24 panels',
-    completion: '11 days'
-  },
-  {
-    id: 2,
-    title: 'Commercial Complex - Sliema',
-    category: 'Commercial',
-    icon: Building2,
-    capacity: '45 kW',
-    panels: '120 panels',
-    completion: '14 days'
-  },
-  {
-    id: 3,
-    title: 'Industrial Facility - Marsa',
-    category: 'Industrial',
-    icon: Factory,
-    capacity: '120 kW',
-    panels: '320 panels',
-    completion: '13 days'
-  },
-  {
-    id: 4,
-    title: 'Residential Villa - Mdina',
-    category: 'Residential',
-    icon: Home,
-    capacity: '12 kW',
-    panels: '32 panels',
-    completion: '10 days'
-  },
-  {
-    id: 5,
-    title: 'Office Building - Gzira',
-    category: 'Commercial',
-    icon: Building2,
-    capacity: '28 kW',
-    panels: '76 panels',
+    image: '/projects/r-rabat-1.jpg',
+    capacity: '8 kW',
+    panels: '10 panels',
     completion: '12 days'
   },
   {
+    id: 2,
+    title: 'Solar Installation - Għarb',
+    category: 'Residential',
+    icon: Home,
+    image: '/projects/gharb-1.jpg',
+    capacity: '7 kW',
+    panels: '8 panels',
+    completion: '13 days'
+  },
+  {
+    id: 3,
+    title: 'Solar Installation - Xewkija',
+    category: 'Residential',
+    icon: Home,
+    image: '/projects/x-xewkja-1.jpg',
+    capacity: '5 kW',
+    panels: '6 panels',
+    completion: '14 days'
+  },
+  {
+    id: 4,
+    title: 'Solar Installation - Fontana',
+    category: 'Residential',
+    icon: Home,
+    image: '/projects/fontana-4.jpg',
+    capacity: '5 kW',
+    panels: '6 panels',
+    completion: '11 days'
+  },
+  {
+    id: 5,
+    title: 'Solar Installation - Ta\' Kerċem',
+    category: 'Residential',
+    icon: Home,
+    image: '/projects/ta-kercem-2.jpg',
+    capacity: '7 kW',
+    panels: '8 panels',
+    completion: '13 days'
+  },
+  {
     id: 6,
-    title: 'Manufacturing Plant - Bulebel',
-    category: 'Industrial',
-    icon: Factory,
-    capacity: '95 kW',
-    panels: '250 panels',
+    title: 'Solar Installation - Xagħra',
+    category: 'Residential',
+    icon: Home,
+    image: '/projects/x-xaghra-1.jpg',
+    capacity: '8 kW',
+    panels: '10 panels',
     completion: '14 days'
   }
 ];
@@ -99,12 +105,15 @@ export default function Portfolio() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 hover:shadow-2xl transition-all duration-300"
             >
-              {/* Image placeholder - Replace with actual project images */}
-              <div className="relative aspect-[4/3] bg-gradient-to-br from-sky-100 via-blue-100 to-emerald-100 overflow-hidden">
-                {/* Placeholder pattern */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <project.icon className="w-24 h-24 text-white opacity-20" />
-                </div>
+              {/* Project Image */}
+              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
 
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
