@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -28,21 +28,18 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
-                className="p-2 bg-gray-800 hover:bg-sky-600 rounded-lg transition-colors duration-300"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
+                href="https://www.facebook.com/ghawdex.pro"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-gray-800 hover:bg-sky-600 rounded-lg transition-colors duration-300"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/ghawdex_engineering/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-gray-800 hover:bg-sky-600 rounded-lg transition-colors duration-300"
                 aria-label="Instagram"
               >
@@ -114,7 +111,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
                 <div className="text-gray-400">
-                  Malta
+                  Xewkija Industrial Zone, Malta
                 </div>
               </li>
             </ul>
