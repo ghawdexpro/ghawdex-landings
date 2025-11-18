@@ -14,13 +14,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ghawdex | Solar Installation in 14 Days | Professional Solar Energy Solutions",
-  description: "Transform your property with professional solar installation in just 14 days. Advanced building analysis using Google Earth & Solar API. Expert installation across Malta. Get your free solar analysis today.",
-  keywords: ["solar installation", "solar panels Malta", "14 day installation", "solar energy", "renewable energy", "Google Solar API", "professional solar installers"],
+  title: "Ghawdex | Solar Installation in 14 Days | Solar Bundles + CCTV + Heritage Buildings | Malta",
+  description: "Premium solar bundles in Malta: Solar + CCTV + Growing Systems. Government grant takeover specialists - finish in 14 days. Custom wall-mounted solutions for heritage buildings. Transform your property with professional installation.",
+  keywords: [
+    "solar installation Malta",
+    "solar panels Malta",
+    "14 day installation",
+    "solar energy bundles",
+    "CCTV solar package",
+    "government grant solar Malta",
+    "heritage building solar",
+    "old building solar solutions",
+    "wall-mounted solar panels",
+    "solar grant takeover Malta",
+    "LED growing system Malta",
+    "renewable energy Malta",
+    "Google Solar API",
+    "professional solar installers Malta",
+    "solar security bundle",
+    "custom solar structures Malta"
+  ],
   authors: [{ name: "Ghawdex" }],
   openGraph: {
-    title: "Ghawdex | Solar Installation in 14 Days",
-    description: "Professional solar energy solutions with cutting-edge technology. From real-time building analysis to complete installation—fast, reliable, and expertly done.",
+    title: "Ghawdex | Solar Bundles, Grant Takeover & Heritage Solutions | Malta",
+    description: "Premium Energy Independence Bundle (Solar+CCTV+Growing). Government grant takeover in 14 days. Custom wall-mounted solar for heritage buildings. Expert installation across Malta.",
     url: "https://ghawdex.pro",
     siteName: "Ghawdex Solar",
     type: "website",
@@ -29,14 +46,14 @@ export const metadata: Metadata = {
         url: "/og/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ghawdex Solar Installation",
+        alt: "Ghawdex Solar Installation - Premium Bundles & Heritage Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ghawdex | Solar Installation in 14 Days",
-    description: "Professional solar energy solutions delivered fast. Expert installation across Malta.",
+    title: "Ghawdex | Solar Bundles + Heritage Solutions | Malta",
+    description: "Premium solar bundles with CCTV & growing systems. Government grant takeover specialists. Custom solutions for heritage buildings. 14-day installation guaranteed.",
     images: ["/og/og-image.png"],
   },
   icons: {
