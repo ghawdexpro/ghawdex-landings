@@ -255,7 +255,7 @@ export default function FAQ() {
               Contact Us on WhatsApp
             </a>
             <a
-              href="https://solar-scan-ge-production-d63a.up.railway.app/"
+              href="https://app.ghawdex.pro"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 bg-sky-700 hover:bg-sky-800 text-white font-semibold rounded-full border-2 border-sky-400 transition-all duration-300"

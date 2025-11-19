@@ -167,7 +167,7 @@ export default function Services() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://solar-scan-ge-production-d63a.up.railway.app/"
+              href="https://app.ghawdex.pro"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 bg-white hover:bg-gray-50 text-sky-600 font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"

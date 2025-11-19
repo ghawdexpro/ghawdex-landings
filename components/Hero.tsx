@@ -112,13 +112,13 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <MagneticButton
-              href="https://solar-scan-ge-production-d63a.up.railway.app/"
+              href="https://app.ghawdex.pro"
               target="_blank"
               rel="noopener noreferrer"
               variant="primary"
               onClick={() => {
                 trackCTAClick('Get Your Free Analysis', 'Hero');
-                trackExternalLinkClick('https://solar-scan-ge-production-d63a.up.railway.app/', 'Solar Analysis Tool');
+                trackExternalLinkClick('https://app.ghawdex.pro', 'Solar Analysis Tool');
               }}
             >
               <div className="flex items-center gap-3 whitespace-nowrap">

@@ -71,7 +71,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://solar-scan-ge-production-d63a.up.railway.app/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="https://app.ghawdex.pro" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
                   Analysis Tool
                 </a>
               </li>

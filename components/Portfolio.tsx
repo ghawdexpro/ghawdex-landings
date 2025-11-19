@@ -243,7 +243,7 @@ export default function Portfolio() {
             Ready to see your property transformed with solar energy?
           </p>
           <MagneticButton
-            href="https://solar-scan-ge-production-d63a.up.railway.app/"
+            href="https://app.ghawdex.pro"
             target="_blank"
             rel="noopener noreferrer"
             variant="primary"
