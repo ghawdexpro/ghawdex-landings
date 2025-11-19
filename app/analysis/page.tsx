@@ -331,8 +331,7 @@ export default function AnalysisPage() {
                 href="#contact"
                 variant="primary"
               >
-                <span>Get Your Custom Quote</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Get Your Custom Quote
               </MagneticButton>
 
               <MagneticButton
