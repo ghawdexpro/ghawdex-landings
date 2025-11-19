@@ -53,7 +53,7 @@ export default function Hero() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center justify-center mb-8"
+            className="inline-flex items-center justify-center mb-6 sm:mb-8"
           >
             <Image
               src="/logo/Ghawdex engineering logo.svg"
@@ -61,7 +61,7 @@ export default function Hero() {
               width={200}
               height={80}
               priority
-              className="h-16 sm:h-20 w-auto"
+              className="h-14 sm:h-16 md:h-20 w-auto max-w-[160px] sm:max-w-[200px]"
             />
           </motion.div>
 
@@ -70,7 +70,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, delay: 0.2, ease: easing }}
-            className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 leading-[0.95]"
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 leading-tight sm:leading-[0.95]"
           >
             <span className="inline-block text-gray-900">
               Solar Installation in{' '}
@@ -97,7 +97,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
             Professional solar energy solutions with cutting-edge technology.
             From real-time building analysis to complete installation—fast, reliable, and expertly done.
@@ -133,27 +133,27 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-gray-500"
+            className="mt-12 sm:mt-14 md:mt-16 flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-gray-500"
           >
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-2 h-2 bg-amber-500 rounded-full flex-shrink-0"></div>
               <span>100% Installation Guarantee</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-2 h-2 bg-amber-500 rounded-full flex-shrink-0"></div>
               <span>Real-Time Analysis</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-2 h-2 bg-amber-500 rounded-full flex-shrink-0"></div>
               <span>Professional Team</span>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on very small screens */}
       <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="hidden sm:block absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >

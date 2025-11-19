@@ -71,14 +71,14 @@ export default function VideoShowcase() {
             <span>Project Showcase</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             See Our Work in{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-400 to-yellow-400">
               Action
             </span>
           </h2>
 
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-4">
             Watch our expert installers transform homes with clean, efficient solar energy
           </p>
         </motion.div>
@@ -99,6 +99,7 @@ export default function VideoShowcase() {
             muted
             onEnded={handleVideoEnd}
             playsInline
+            preload="metadata"
             aria-label="Ghawdex solar installation showcase video"
             className="w-full h-auto block bg-black"
             style={{ aspectRatio: '16 / 9' }}
@@ -110,13 +111,13 @@ export default function VideoShowcase() {
           {/* Optional gradient overlay on edges for sophistication */}
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl" />
 
-          {/* Video indicators */}
+          {/* Video indicators - larger on mobile */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
             {videos.map((_, index) => (
               <motion.div
                 key={index}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentVideoIndex ? 'w-8 bg-amber-500' : 'w-2 bg-gray-500'
+                className={`h-2.5 sm:h-2 rounded-full transition-all ${
+                  index === currentVideoIndex ? 'w-10 sm:w-8 bg-amber-500' : 'w-2.5 sm:w-2 bg-gray-500'
                 }`}
                 animate={{
                   opacity: index === currentVideoIndex ? 1 : 0.5,

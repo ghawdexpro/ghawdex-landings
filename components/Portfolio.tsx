@@ -161,23 +161,23 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         </div>
 
         {/* Project info with glassmorphism */}
-        <div className="relative p-6 backdrop-blur-sm bg-white/60 border-t border-white/40">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors">
+        <div className="relative p-4 sm:p-6 backdrop-blur-sm bg-white/60 border-t border-white/40">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-red-600 transition-colors">
             {project.title}
           </h3>
 
-          <div className="grid grid-cols-3 gap-4 text-sm">
-            <div className="text-center p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/40">
-              <div className="text-gray-500 text-xs mb-1 font-medium">Capacity</div>
-              <div className="font-bold text-gray-900">{project.capacity}</div>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 text-xs sm:text-sm">
+            <div className="text-center p-2 sm:p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/40">
+              <div className="text-gray-500 text-[10px] sm:text-xs mb-1 font-medium">Capacity</div>
+              <div className="font-bold text-gray-900 text-xs sm:text-sm">{project.capacity}</div>
             </div>
-            <div className="text-center p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/40">
-              <div className="text-gray-500 text-xs mb-1 font-medium">Panels</div>
-              <div className="font-bold text-gray-900">{project.panels}</div>
+            <div className="text-center p-2 sm:p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/40">
+              <div className="text-gray-500 text-[10px] sm:text-xs mb-1 font-medium">Panels</div>
+              <div className="font-bold text-gray-900 text-xs sm:text-sm">{project.panels}</div>
             </div>
-            <div className="text-center p-3 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 backdrop-blur-sm border border-amber-400/40">
-              <div className="text-amber-700 text-xs mb-1 font-medium">Time</div>
-              <div className="font-bold text-amber-600">{project.completion}</div>
+            <div className="text-center p-2 sm:p-3 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 backdrop-blur-sm border border-amber-400/40">
+              <div className="text-amber-700 text-[10px] sm:text-xs mb-1 font-medium">Time</div>
+              <div className="font-bold text-amber-600 text-xs sm:text-sm">{project.completion}</div>
             </div>
           </div>
         </div>
@@ -215,17 +215,17 @@ export default function Portfolio() {
             <span>Our Work</span>
           </motion.div>
 
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6">
             Proven Track Record
           </h2>
-          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
             Quality installations delivered across Malta—<br className="hidden sm:block" />
             from residential homes to industrial facilities
           </p>
         </motion.div>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 perspective-1000">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 perspective-1000">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -237,9 +237,9 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4, ease: easing }}
-          className="mt-20 text-center"
+          className="mt-16 sm:mt-20 text-center"
         >
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 px-4">
             Ready to see your property transformed with solar energy?
           </p>
           <MagneticButton

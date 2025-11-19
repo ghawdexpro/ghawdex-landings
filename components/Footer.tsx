@@ -8,30 +8,30 @@ export default function Footer() {
 
   return (
     <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-14 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12">
 
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center mb-6">
+            <div className="flex items-center mb-4 sm:mb-6">
               <Image
                 src="/logo/Ghawdex engineering logo.svg"
                 alt="Ghawdex Engineering"
                 width={180}
                 height={60}
-                className="h-12 w-auto"
+                className="h-10 sm:h-12 w-auto"
               />
             </div>
-            <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6 max-w-md leading-relaxed">
               Professional solar energy solutions delivered in 14 days.
               We combine cutting-edge technology with expert installation to power your future.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3 sm:gap-4">
               <a
                 href="https://www.facebook.com/ghawdex.pro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300"
+                className="p-2.5 sm:p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300 tap-target"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
@@ -40,7 +40,7 @@ export default function Footer() {
                 href="https://www.instagram.com/ghawdex_engineering/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300"
+                className="p-2.5 sm:p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300 tap-target"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -50,8 +50,8 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Quick Links</h3>
+            <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li>
                 <a href="/about" className="text-gray-400 hover:text-white transition-colors duration-300">
                   About Us
@@ -82,8 +82,8 @@ export default function Footer() {
 
           {/* Contact info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <ul className="space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Contact</h3>
+            <ul className="space-y-3 sm:space-y-4 text-sm sm:text-base">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
@@ -119,12 +119,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-gray-700">
+        <div className="pt-6 sm:pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-xs sm:text-sm">
               © {currentYear} Ghawdex. All rights reserved.
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
               <a href="/privacy" className="text-gray-400 hover:text-white transition-colors duration-300">
                 Privacy Policy
               </a>

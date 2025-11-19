@@ -73,19 +73,19 @@ export default function AppShowcase() {
               <span>Powered by Advanced Technology</span>
             </motion.div>
 
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
               See Your Solar Potential in{' '}
               <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-amber-600 to-yellow-500 bg-[length:200%_auto] animate-gradient-x">
                 Real-Time
               </span>
             </h2>
 
-            <p className="text-xl sm:text-2xl text-gray-600 mb-10 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-8 sm:mb-10 leading-relaxed">
               Advanced analysis using Google Earth and Solar API—instant, accurate estimates before we visit.
             </p>
 
             {/* App features list with glassmorphism */}
-            <div className="space-y-4 mb-10">
+            <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
               {appFeatures.map((feature, index) => (
                 <motion.div
                   key={feature.title}
@@ -93,21 +93,20 @@ export default function AppShowcase() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1, ease: easing }}
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  className="group flex items-start gap-4 p-5 glass-card hover:shadow-glow transition-all duration-300 transform-gpu"
+                  whileTap={{ scale: 0.98 }}
+                  className="group flex items-start gap-3 sm:gap-4 p-4 sm:p-5 glass-card hover:shadow-glow transition-all duration-300 transform-gpu"
                 >
                   <motion.div
-                    className="flex-shrink-0 p-3 bg-gradient-to-br from-red-600 to-amber-600 rounded-xl shadow-lg"
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6, ease: easing }}
+                    className="flex-shrink-0 p-2.5 sm:p-3 bg-gradient-to-br from-red-600 to-amber-600 rounded-xl shadow-lg"
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <feature.icon className="w-5 h-5 text-white" />
+                    <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </motion.div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1 group-hover:text-red-600 transition-colors">
+                    <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1 group-hover:text-red-600 transition-colors">
                       {feature.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}

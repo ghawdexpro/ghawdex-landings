@@ -63,7 +63,14 @@ html {
   padding-bottom: var(--section-padding);
 }
 
-@media (max-width: 768px) {
+/* Mobile-first responsive section padding */
+@media (max-width: 475px) {
+  :root {
+    --section-padding: 2.5rem; /* Extra tight on very small screens */
+  }
+}
+
+@media (min-width: 476px) and (max-width: 768px) {
   :root {
     --section-padding: 3rem;
   }
@@ -141,4 +148,67 @@ html {
 /* 3D Perspective for Card Tilt */
 .perspective-1000 {
   perspective: 1000px;
+}
+
+/* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Reduce animation complexity on mobile devices */
+@media (max-width: 768px) {
+  .animate-gradient-x,
+  .animate-gradient-y {
+    animation-duration: 6s; /* Slower animations = less GPU work */
+  }
+
+  /* Simplify backdrop blur on mobile for better performance */
+  .glass-card {
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+  }
+
+  .backdrop-blur-md { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .backdrop-blur-lg { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .backdrop-blur-xl { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch-friendly utilities */
+.tap-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.no-callout {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Safe area support for notched devices */
+@supports (padding: max(0px)) {
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .safe-right {
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .safe-left {
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
 }
