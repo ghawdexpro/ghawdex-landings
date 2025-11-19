@@ -36,15 +36,15 @@ const yearlyComparison = [
 ];
 
 const paybackTimeline = [
-  { year: 0, value: -12000, label: 'Investment' },
-  { year: 1, value: -8550 },
-  { year: 2, value: -5100 },
-  { year: 3, value: -1650 },
-  { year: 4, value: 1800, label: 'Break Even!' },
-  { year: 5, value: 5250 },
-  { year: 10, value: 22500 },
-  { year: 15, value: 39750 },
-  { year: 20, value: 57000, label: '€57k Saved!' },
+  { year: 0, value: -5000, label: 'Investment' },
+  { year: 1, value: -1550 },
+  { year: 2, value: 1900, label: 'Break Even!' },
+  { year: 3, value: 5350 },
+  { year: 4, value: 8800 },
+  { year: 5, value: 12250 },
+  { year: 10, value: 29500 },
+  { year: 15, value: 46750 },
+  { year: 20, value: 64000, label: '€64k Profit!' },
 ];
 
 export default function AnalysisPage() {
@@ -230,7 +230,7 @@ export default function AnalysisPage() {
               Your Investment Timeline
             </h2>
             <p className="text-xl text-gray-400">
-              Break even in <span className="text-green-400 font-bold">Year 4</span> - then it's pure profit
+              Break even in <span className="text-green-400 font-bold">under 2 years</span> - then it's pure profit
             </p>
           </motion.div>
 
@@ -272,7 +272,7 @@ export default function AnalysisPage() {
 
             <div className="mt-6 text-center">
               <p className="text-gray-400 text-sm mb-2">After 20 years:</p>
-              <p className="text-3xl font-bold text-green-400">€57,000 in total income!</p>
+              <p className="text-3xl font-bold text-green-400">€64,000 in total profit!</p>
             </div>
           </motion.div>
         </div>
