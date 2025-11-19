@@ -2,6 +2,7 @@
 
 import { Mail, Phone, MapPin, Facebook, Instagram, MessageCircle } from 'lucide-react';
 import Image from 'next/image';
+import { trackPhoneClick, trackEmailClick, trackWhatsAppClick, trackSocialClick } from '@/lib/analytics';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -31,6 +32,7 @@ export default function Footer() {
                 href="https://www.facebook.com/ghawdex.pro"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocialClick('Facebook')}
                 className="p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300"
                 aria-label="Facebook"
               >
@@ -40,6 +42,7 @@ export default function Footer() {
                 href="https://www.instagram.com/ghawdex_engineering/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocialClick('Instagram')}
                 className="p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300"
                 aria-label="Instagram"
               >
@@ -87,7 +90,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <a href="mailto:info@ghawdex.pro" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="mailto:info@ghawdex.pro" onClick={trackEmailClick} className="text-gray-400 hover:text-white transition-colors duration-300">
                     info@ghawdex.pro
                   </a>
                 </div>
@@ -95,7 +98,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <a href="tel:+35679055156" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="tel:+35679055156" onClick={trackPhoneClick} className="text-gray-400 hover:text-white transition-colors duration-300">
                     +356 7905 5156
                   </a>
                 </div>
@@ -103,7 +106,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MessageCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <a href="https://wa.me/35679055156" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="https://wa.me/35679055156" target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppClick} className="text-gray-400 hover:text-white transition-colors duration-300">
                     WhatsApp Chat
                   </a>
                 </div>

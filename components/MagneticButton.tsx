@@ -9,6 +9,7 @@ interface MagneticButtonProps {
   variant?: 'primary' | 'secondary';
   target?: string;
   rel?: string;
+  onClick?: () => void;
 }
 
 export default function MagneticButton({
@@ -16,7 +17,8 @@ export default function MagneticButton({
   href,
   variant = 'primary',
   target,
-  rel
+  rel,
+  onClick
 }: MagneticButtonProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLAnchorElement>(null);
@@ -40,6 +42,7 @@ export default function MagneticButton({
         href={href}
         target={target}
         rel={rel}
+        onClick={onClick}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         animate={{ x: position.x, y: position.y }}
@@ -73,6 +76,7 @@ export default function MagneticButton({
       href={href}
       target={target}
       rel={rel}
+      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}

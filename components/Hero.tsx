@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import MagneticButton from './MagneticButton';
+import { trackCTAClick, trackExternalLinkClick } from '@/lib/analytics';
 
 // Smooth easing for premium feel
 const easing = [0.16, 1, 0.3, 1] as const; // easeOutExpo
@@ -115,6 +116,10 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               variant="primary"
+              onClick={() => {
+                trackCTAClick('Get Your Free Analysis', 'Hero');
+                trackExternalLinkClick('https://solar-scan-ge-production-d63a.up.railway.app/', 'Solar Analysis Tool');
+              }}
             >
               <div className="flex items-center gap-3 whitespace-nowrap">
                 <span>Get Your Free Analysis</span>
@@ -125,6 +130,7 @@ export default function Hero() {
             <MagneticButton
               href="#portfolio"
               variant="secondary"
+              onClick={() => trackCTAClick('View Our Work', 'Hero')}
             >
               View Our Work
             </MagneticButton>

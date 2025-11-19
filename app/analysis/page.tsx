@@ -5,6 +5,8 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 import { TrendingUp, Zap, Calendar, ArrowRight, Check, Sparkles } from 'lucide-react';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import MagneticButton from '@/components/MagneticButton';
+import { trackAnalysisPageView, trackCTAClick, trackPhoneClick } from '@/lib/analytics';
+import { useEffect } from 'react';
 
 const easing = [0.16, 1, 0.3, 1] as const;
 
@@ -48,6 +50,11 @@ const paybackTimeline = [
 ];
 
 export default function AnalysisPage() {
+  // Track analysis page view
+  useEffect(() => {
+    trackAnalysisPageView();
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#1a1a1a]">
       {/* Hero Impact Section - MASSIVE SAVINGS NUMBER */}
@@ -330,6 +337,7 @@ export default function AnalysisPage() {
               <MagneticButton
                 href="#contact"
                 variant="primary"
+                onClick={() => trackCTAClick('Get Your Custom Quote', 'Analysis Page')}
               >
                 Get Your Custom Quote
               </MagneticButton>
@@ -337,6 +345,10 @@ export default function AnalysisPage() {
               <MagneticButton
                 href="tel:+35679055156"
                 variant="secondary"
+                onClick={() => {
+                  trackCTAClick('Schedule Free Consultation', 'Analysis Page');
+                  trackPhoneClick();
+                }}
               >
                 Schedule Free Consultation
               </MagneticButton>
