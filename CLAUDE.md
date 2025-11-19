@@ -55,6 +55,37 @@ components/
 **Page Flow:**
 `Hero` → `VideoShowcase` → `ValueProposition` → `AppShowcase` → `Portfolio` → `Footer`
 
+### Analysis Page (`/analysis`)
+
+**Purpose:** Conversion-focused solar ROI calculator showcasing Malta-specific savings.
+
+**Route:** `/app/analysis/page.tsx`
+
+**Key Features:**
+- Hero counter: €69,000 total income over 20 years
+- ROI cards: Monthly (€287.50), Yearly (€3,450), System Size (15 kWp)
+- Cumulative savings chart (Recharts AreaChart)
+- Payback timeline chart (break even under 2 years)
+- Property details grid
+- CTA section with contact buttons
+
+**Malta Solar Calculations:**
+```
+15 kWp × 1.5 MWh/kWp = 23 MWh/year production
+23 MWh × €150/MWh feed-in tariff = €3,450/year income
+€5,000 investment = Under 2-year break even
+20-year profit = €64,000
+```
+
+**Data Arrays:**
+- `cumulativeSavingsData`: Monthly income with seasonal variation (totals €3,450)
+- `paybackTimeline`: Year-by-year profit from -€5,000 to +€64,000
+
+**Components Used:**
+- `AnimatedCounter`: Number count-up animations with European formatting (dots every 3 digits)
+- `MagneticButton`: CTAs for quotes and consultations
+- Recharts: `AreaChart` for data visualization
+
 ### Tailwind CSS v4 Configuration
 
 **CRITICAL:** This project uses Tailwind CSS v4 with CSS-based configuration (NOT `tailwind.config.js`).
@@ -259,3 +290,28 @@ npm run build
 Required: Node.js ≥ 20.9.0 (specified in `package.json` engines)
 
 Check current: `node --version`
+
+## Production Deployment
+
+**Platform:** Railway
+
+**Custom Domain:** www.ghawdex.pro
+
+**DNS Configuration (Namecheap):**
+```
+Type     Host    Value
+CNAME    www     v66r7fpe.up.railway.app
+```
+
+**Production URLs:**
+- Main site: https://www.ghawdex.pro
+- Analysis page: https://www.ghawdex.pro/analysis
+- Railway fallback: https://web-production-39617.up.railway.app
+
+**Deployment Process:**
+1. Push to `main` branch triggers automatic Railway deployment
+2. Build completes in ~2-3 minutes
+3. DNS changes propagate in 5-60 minutes
+
+**SSL/HTTPS:**
+Automatically provided by Railway for custom domains
