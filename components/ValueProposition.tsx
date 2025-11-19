@@ -1,108 +1,197 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Clock, Shield, Sparkles, TrendingUp } from 'lucide-react';
+import { Clock, Shield, Sparkles, TrendingUp, Zap } from 'lucide-react';
+import AnimatedCounter from './AnimatedCounter';
 
-const features = [
-  {
-    icon: Clock,
-    title: '14-Day Installation',
-    description: 'From initial consultation to final activation—your solar system up and running in just two weeks.',
-    color: 'from-sky-500 to-blue-600'
-  },
-  {
-    icon: Sparkles,
-    title: 'Real-Time Analysis',
-    description: 'Our advanced app analyzes your building using Google Earth and Solar API for precise planning.',
-    color: 'from-amber-500 to-orange-600'
-  },
-  {
-    icon: Shield,
-    title: 'Professional Excellence',
-    description: 'Certified installers, premium equipment, and comprehensive warranties. Your investment is protected.',
-    color: 'from-emerald-500 to-green-600'
-  },
-  {
-    icon: TrendingUp,
-    title: 'Maximize Savings',
-    description: 'Optimized system design ensures maximum energy production and fastest return on investment.',
-    color: 'from-purple-500 to-indigo-600'
-  }
-];
+const easing = [0.16, 1, 0.3, 1] as const; // easeOutExpo
 
 export default function ValueProposition() {
   return (
-    <section className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="relative section-padding overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-50/30 to-white"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: easing }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
             Why Choose Ghawdex?
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We combine cutting-edge technology with professional expertise to deliver solar solutions that exceed expectations.
+          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Cutting-edge technology meets professional expertise
           </p>
         </motion.div>
 
-        {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="relative h-full p-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 mb-16">
+
+          {/* HERO CARD: 9-Day Installation - Large featured card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: easing }}
+            className="lg:col-span-7 lg:row-span-2 group"
+          >
+            <div className="relative h-full min-h-[400px] p-10 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
+              {/* Animated gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* Floating gradient orb */}
+              <motion.div
+                className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-sky-400 to-blue-600 rounded-full opacity-20 blur-3xl"
+                animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <div className="relative z-10 h-full flex flex-col justify-between">
                 {/* Icon */}
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${feature.color} mb-4 shadow-lg`}>
-                  <feature.icon className="w-6 h-6 text-white" />
+                <div className="inline-flex p-4 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 mb-6 shadow-xl w-fit">
+                  <Clock className="w-8 h-8 text-white" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {feature.title}
+                <div>
+                  <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">
+                      9 Days
+                    </span>
+                    <br />
+                    Installation
+                  </h3>
+                  <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+                    From initial consultation to final activation—your solar system up and running in record time. Industry-leading speed without compromising quality.
+                  </p>
+                </div>
+
+                {/* Stats mini-badges */}
+                <div className="flex gap-4 mt-8">
+                  <div className="px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-white/40">
+                    <span className="text-sm font-semibold text-gray-700">⚡ Fast-Track Process</span>
+                  </div>
+                  <div className="px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-white/40">
+                    <span className="text-sm font-semibold text-gray-700">✓ Full Turnkey</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Real-Time Analysis - Medium card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: easing }}
+            className="lg:col-span-5 group"
+          >
+            <div className="relative h-full min-h-[180px] p-8 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
+              <motion.div
+                className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-amber-400 to-orange-600 rounded-full opacity-20 blur-2xl"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <div className="relative z-10">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 mb-4 shadow-lg">
+                  <Sparkles className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  Real-Time Analysis
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
+                  Advanced app analyzes your building using Google Earth and Solar API for precise planning.
                 </p>
-
-                {/* Decorative element */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl`}></div>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
+
+          {/* Professional Excellence - Medium card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: easing }}
+            className="lg:col-span-5 group"
+          >
+            <div className="relative h-full min-h-[180px] p-8 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
+              <motion.div
+                className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-emerald-400 to-green-600 rounded-full opacity-20 blur-2xl"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <div className="relative z-10">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 mb-4 shadow-lg">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  Professional Excellence
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Certified installers, premium equipment, and comprehensive warranties. Your investment is protected.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
 
-        {/* Stats section */}
+        {/* Stats Section - Full width glassmorphism card */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 p-8 bg-gradient-to-r from-sky-600 to-blue-600 rounded-2xl shadow-xl"
+          transition={{ duration: 0.8, delay: 0.3, ease: easing }}
+          className="relative overflow-hidden rounded-3xl"
         >
-          <div className="text-center">
-            <div className="text-4xl sm:text-5xl font-bold text-white mb-2">500+</div>
-            <div className="text-sky-100">Installations Completed</div>
-          </div>
-          <div className="text-center border-x-0 sm:border-x border-sky-400">
-            <div className="text-4xl sm:text-5xl font-bold text-white mb-2">9</div>
-            <div className="text-sky-100">Days Average Install</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl sm:text-5xl font-bold text-white mb-2">98%</div>
-            <div className="text-sky-100">Customer Satisfaction</div>
+          {/* Gradient background with animation */}
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-600 via-blue-600 to-purple-600 bg-[length:200%_auto] animate-gradient-x"></div>
+
+          {/* Glass overlay */}
+          <div className="relative backdrop-blur-xl bg-white/10 border border-white/20 p-10 sm:p-14">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
+
+              <div className="text-center group">
+                <AnimatedCounter
+                  target={500}
+                  suffix="+"
+                  duration={2500}
+                  className="text-6xl sm:text-7xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="text-lg text-sky-100 font-medium">Installations Completed</div>
+              </div>
+
+              <div className="text-center border-x-0 sm:border-x border-white/30 group">
+                <AnimatedCounter
+                  target={9}
+                  duration={1500}
+                  className="text-6xl sm:text-7xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="text-lg text-sky-100 font-medium">Days Average Install</div>
+              </div>
+
+              <div className="text-center group">
+                <AnimatedCounter
+                  target={98}
+                  suffix="%"
+                  duration={2000}
+                  className="text-6xl sm:text-7xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="text-lg text-sky-100 font-medium">Customer Satisfaction</div>
+              </div>
+
+            </div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );

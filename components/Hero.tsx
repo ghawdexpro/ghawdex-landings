@@ -3,34 +3,45 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import MagneticButton from './MagneticButton';
+
+// Smooth easing for premium feel
+const easing = [0.16, 1, 0.3, 1] as const; // easeOutExpo
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-sky-50 via-white to-blue-50">
-      {/* Animated background elements */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+      {/* Enhanced gradient mesh background */}
       <div className="absolute inset-0 overflow-hidden">
+        {/* Animated gradient mesh - 7 layers for depth */}
         <motion.div
-          className="absolute top-20 right-20 w-72 h-72 bg-sky-200/30 rounded-full blur-3xl"
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.3) 0px, transparent 50%),
+              radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.2) 0px, transparent 50%),
+              radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 0.2) 0px, transparent 50%),
+              radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 0.2) 0px, transparent 50%),
+              radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 0.3) 0px, transparent 50%),
+              radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 0.2) 0px, transparent 50%),
+              radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 0.2) 0px, transparent 50%)
+            `
+          }}
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 8,
+            duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
-        <motion.div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-amber-200/30 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
+
+        {/* Grain texture overlay for premium feel */}
+        <div
+          className="absolute inset-0 opacity-[0.015]"
+          style={{
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
           }}
         />
       </div>
@@ -54,16 +65,30 @@ export default function Hero() {
             />
           </motion.div>
 
-          {/* Main headline */}
+          {/* Main headline - MASSIVE typography with shimmer */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+            initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, delay: 0.2, ease: easing }}
+            className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 leading-[0.95]"
           >
-            Solar Installation in{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-600">
-              14 Days
+            <span className="inline-block text-gray-900">
+              Solar Installation in{' '}
+            </span>
+            <span className="inline-block relative">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-purple-600 bg-[length:200%_auto] animate-gradient-x">
+                9 Days
+              </span>
+              {/* Shimmer effect */}
+              <motion.span
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent bg-clip-text"
+                animate={{ x: ['-200%', '200%'] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                style={{
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                }}
+              />
             </span>
           </motion.h1>
 
@@ -78,28 +103,29 @@ export default function Hero() {
             From real-time building analysis to complete installation—fast, reliable, and expertly done.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Magnetic with smooth animations */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            transition={{ duration: 0.8, delay: 0.6, ease: easing }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
-            <a
+            <MagneticButton
               href="https://solar-scan-ge-production-d63a.up.railway.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+              variant="primary"
             >
-              Get Your Free Analysis
+              <span>Get Your Free Analysis</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
+            </MagneticButton>
+
+            <MagneticButton
               href="#portfolio"
-              className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-full border-2 border-gray-200 hover:border-sky-600 transition-all duration-300 shadow-md"
+              variant="secondary"
             >
               View Our Work
-            </a>
+            </MagneticButton>
           </motion.div>
 
           {/* Trust indicators */}
