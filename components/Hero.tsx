@@ -116,8 +116,10 @@ export default function Hero() {
               rel="noopener noreferrer"
               variant="primary"
             >
-              <span>Get Your Free Analysis</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center gap-3 whitespace-nowrap">
+                <span>Get Your Free Analysis</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </div>
             </MagneticButton>
 
             <MagneticButton
