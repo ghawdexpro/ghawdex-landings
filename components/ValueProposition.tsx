@@ -166,7 +166,7 @@ export default function ValueProposition() {
                   duration={2500}
                   className="text-6xl sm:text-7xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="text-lg text-sky-100 font-medium">Installations Completed</div>
+                <div className="text-lg text-amber-100 font-medium">Installations Completed</div>
               </div>
 
               <div className="text-center border-x-0 sm:border-x border-white/30 group">
@@ -175,7 +175,7 @@ export default function ValueProposition() {
                   duration={1500}
                   className="text-6xl sm:text-7xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="text-lg text-sky-100 font-medium">Days Average Install</div>
+                <div className="text-lg text-amber-100 font-medium">Days Average Install</div>
               </div>
 
               <div className="text-center group">
@@ -185,7 +185,7 @@ export default function ValueProposition() {
                   duration={2000}
                   className="text-6xl sm:text-7xl font-bold text-white mb-3 group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="text-lg text-sky-100 font-medium">Customer Satisfaction</div>
+                <div className="text-lg text-amber-100 font-medium">Customer Satisfaction</div>
               </div>
 
             </div>

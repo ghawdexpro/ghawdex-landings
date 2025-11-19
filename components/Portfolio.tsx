@@ -162,7 +162,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
         {/* Project info with glassmorphism */}
         <div className="relative p-6 backdrop-blur-sm bg-white/60 border-t border-white/40">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-sky-600 transition-colors">
+          <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors">
             {project.title}
           </h3>
 

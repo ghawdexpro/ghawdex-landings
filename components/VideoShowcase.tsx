@@ -31,7 +31,7 @@ export default function VideoShowcase() {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-sky-600/20 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-red-600/20 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -43,7 +43,7 @@ export default function VideoShowcase() {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-amber-600/20 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -66,14 +66,14 @@ export default function VideoShowcase() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/20 text-sky-300 rounded-full text-sm font-semibold mb-6 border border-sky-500/50">
-            <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 text-amber-300 rounded-full text-sm font-semibold mb-6 border border-red-500/50">
+            <span className="w-2 h-2 bg-amber-400 rounded-full"></span>
             <span>Project Showcase</span>
           </div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
             See Our Work in{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-amber-400 to-yellow-400">
               Action
             </span>
           </h2>
@@ -116,7 +116,7 @@ export default function VideoShowcase() {
               <motion.div
                 key={index}
                 className={`h-2 rounded-full transition-all ${
-                  index === currentVideoIndex ? 'w-8 bg-sky-400' : 'w-2 bg-gray-500'
+                  index === currentVideoIndex ? 'w-8 bg-amber-500' : 'w-2 bg-gray-500'
                 }`}
                 animate={{
                   opacity: index === currentVideoIndex ? 1 : 0.5,

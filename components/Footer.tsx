@@ -31,7 +31,7 @@ export default function Footer() {
                 href="https://www.facebook.com/ghawdex.pro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-800 hover:bg-sky-600 rounded-lg transition-colors duration-300"
+                className="p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
@@ -40,7 +40,7 @@ export default function Footer() {
                 href="https://www.instagram.com/ghawdex_engineering/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-800 hover:bg-sky-600 rounded-lg transition-colors duration-300"
+                className="p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -85,7 +85,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
+                <Mail className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <a href="mailto:info@ghawdex.pro" className="text-gray-400 hover:text-white transition-colors duration-300">
                     info@ghawdex.pro
@@ -93,7 +93,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
+                <Phone className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <a href="tel:+35679055156" className="text-gray-400 hover:text-white transition-colors duration-300">
                     +356 7905 5156
@@ -101,7 +101,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <MessageCircle className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
+                <MessageCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <a href="https://wa.me/35679055156" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
                     WhatsApp Chat
@@ -109,7 +109,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div className="text-gray-400">
                   Xewkija Industrial Zone, Malta
                 </div>
