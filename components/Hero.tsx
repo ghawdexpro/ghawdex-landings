@@ -18,13 +18,13 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.3) 0px, transparent 50%),
-              radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.2) 0px, transparent 50%),
-              radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 0.2) 0px, transparent 50%),
-              radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 0.2) 0px, transparent 50%),
-              radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 0.3) 0px, transparent 50%),
-              radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 0.2) 0px, transparent 50%),
-              radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 0.2) 0px, transparent 50%)
+              radial-gradient(at 27% 37%, hsla(355, 87%, 47%, 0.3) 0px, transparent 50%),
+              radial-gradient(at 97% 21%, hsla(45, 93%, 57%, 0.25) 0px, transparent 50%),
+              radial-gradient(at 52% 99%, hsla(15, 100%, 60%, 0.2) 0px, transparent 50%),
+              radial-gradient(at 10% 29%, hsla(355, 84%, 44%, 0.2) 0px, transparent 50%),
+              radial-gradient(at 97% 96%, hsla(45, 95%, 55%, 0.3) 0px, transparent 50%),
+              radial-gradient(at 33% 50%, hsla(20, 100%, 63%, 0.2) 0px, transparent 50%),
+              radial-gradient(at 79% 53%, hsla(355, 75%, 54%, 0.2) 0px, transparent 50%)
             `
           }}
           animate={{
@@ -76,7 +76,7 @@ export default function Hero() {
               Solar Installation in{' '}
             </span>
             <span className="inline-block relative">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-purple-600 bg-[length:200%_auto] animate-gradient-x">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-amber-500 to-yellow-500 bg-[length:200%_auto] animate-gradient-x">
                 9 Days
               </span>
               {/* Shimmer effect */}
@@ -136,15 +136,15 @@ export default function Hero() {
             className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-gray-500"
           >
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
               <span>100% Installation Guarantee</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
               <span>Real-Time Analysis</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
               <span>Professional Team</span>
             </div>
           </motion.div>

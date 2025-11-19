@@ -44,11 +44,11 @@ export default function MagneticButton({
         onMouseLeave={handleMouseLeave}
         animate={{ x: position.x, y: position.y }}
         transition={{ type: "spring", stiffness: 150, damping: 15 }}
-        className="group relative inline-flex items-center gap-3 px-8 py-5 overflow-hidden rounded-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold text-lg shadow-2xl shadow-sky-500/25 transform-gpu"
+        className="group relative inline-flex items-center gap-3 px-8 py-5 overflow-hidden rounded-full bg-gradient-to-r from-red-600 to-amber-600 text-white font-semibold text-lg shadow-2xl shadow-red-500/25 transform-gpu"
       >
         {/* Animated gradient overlay on hover */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"
+          className="absolute inset-0 bg-gradient-to-r from-amber-600 to-yellow-500"
           initial={{ x: "100%" }}
           whileHover={{ x: "0%" }}
           transition={{ duration: 0.3 }}
@@ -77,11 +77,11 @@ export default function MagneticButton({
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15 }}
-      className="group relative inline-flex items-center gap-3 px-8 py-5 overflow-hidden rounded-full bg-white text-gray-900 font-semibold text-lg border-2 border-gray-200 hover:border-sky-500 shadow-md transition-colors duration-300 transform-gpu"
+      className="group relative inline-flex items-center gap-3 px-8 py-5 overflow-hidden rounded-full bg-white text-gray-900 font-semibold text-lg border-2 border-gray-200 hover:border-red-500 shadow-md transition-colors duration-300 transform-gpu"
     >
       {/* Gradient background on hover */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-sky-50 to-blue-50"
+        className="absolute inset-0 bg-gradient-to-r from-red-50 to-amber-50"
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.3 }}

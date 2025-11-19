@@ -10,7 +10,7 @@ export default function ValueProposition() {
   return (
     <section className="relative section-padding overflow-hidden">
       {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-50/30 to-white"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-amber-50/30 to-white"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section header */}
@@ -42,25 +42,25 @@ export default function ValueProposition() {
           >
             <div className="relative h-full min-h-[400px] p-10 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
               {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-amber-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               {/* Floating gradient orb */}
               <motion.div
-                className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-sky-400 to-blue-600 rounded-full opacity-20 blur-3xl"
+                className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-red-500 to-amber-600 rounded-full opacity-20 blur-3xl"
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
               />
 
               <div className="relative z-10 h-full flex flex-col justify-between">
                 {/* Icon */}
-                <div className="inline-flex p-4 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 mb-6 shadow-xl w-fit">
+                <div className="inline-flex p-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-600 mb-6 shadow-xl w-fit">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
 
                 {/* Content */}
                 <div>
                   <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-amber-600">
                       9 Days
                     </span>
                     <br />
@@ -94,13 +94,13 @@ export default function ValueProposition() {
           >
             <div className="relative h-full min-h-[180px] p-8 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
               <motion.div
-                className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-amber-400 to-orange-600 rounded-full opacity-20 blur-2xl"
+                className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-yellow-400 to-amber-600 rounded-full opacity-20 blur-2xl"
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
               />
 
               <div className="relative z-10">
-                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 mb-4 shadow-lg">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 mb-4 shadow-lg">
                   <Sparkles className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -123,13 +123,13 @@ export default function ValueProposition() {
           >
             <div className="relative h-full min-h-[180px] p-8 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
               <motion.div
-                className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-emerald-400 to-green-600 rounded-full opacity-20 blur-2xl"
+                className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-red-400 to-orange-600 rounded-full opacity-20 blur-2xl"
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
               />
 
               <div className="relative z-10">
-                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 mb-4 shadow-lg">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 mb-4 shadow-lg">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -153,7 +153,7 @@ export default function ValueProposition() {
           className="relative overflow-hidden rounded-3xl"
         >
           {/* Gradient background with animation */}
-          <div className="absolute inset-0 bg-gradient-to-r from-sky-600 via-blue-600 to-purple-600 bg-[length:200%_auto] animate-gradient-x"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-amber-600 to-yellow-500 bg-[length:200%_auto] animate-gradient-x"></div>
 
           {/* Glass overlay */}
           <div className="relative backdrop-blur-xl bg-white/10 border border-white/20 p-10 sm:p-14">

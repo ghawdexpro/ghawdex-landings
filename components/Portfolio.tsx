@@ -146,7 +146,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
           {/* Animated gradient overlay on hover */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-sky-500/30 via-blue-500/20 to-purple-500/30"
+            className="absolute inset-0 bg-gradient-to-br from-red-500/30 via-amber-500/20 to-yellow-500/30"
             initial={{ opacity: 0 }}
             animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.4 }}
@@ -175,15 +175,15 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               <div className="text-gray-500 text-xs mb-1 font-medium">Panels</div>
               <div className="font-bold text-gray-900">{project.panels}</div>
             </div>
-            <div className="text-center p-3 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 backdrop-blur-sm border border-emerald-400/40">
-              <div className="text-emerald-700 text-xs mb-1 font-medium">Time</div>
-              <div className="font-bold text-emerald-600">{project.completion}</div>
+            <div className="text-center p-3 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 backdrop-blur-sm border border-amber-400/40">
+              <div className="text-amber-700 text-xs mb-1 font-medium">Time</div>
+              <div className="font-bold text-amber-600">{project.completion}</div>
             </div>
           </div>
         </div>
 
         {/* Animated bottom accent */}
-        <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 via-blue-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-red-600 via-amber-500 to-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
       </div>
     </motion.div>
   );
@@ -193,7 +193,7 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="relative section-padding overflow-hidden">
       {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-purple-50/20 to-white"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-red-50/20 to-white"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section header */}
@@ -209,7 +209,7 @@ export default function Portfolio() {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: easing }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 rounded-full text-sm font-semibold mb-8 shadow-lg"
+            className="inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-md bg-amber-500/10 border border-amber-500/20 text-amber-700 rounded-full text-sm font-semibold mb-8 shadow-lg"
           >
             <Award className="w-4 h-4" />
             <span>Our Work</span>

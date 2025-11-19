@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Solar Energy Theme Colors */
+  /* Maltese Flag Inspired Theme Colors */
   --background: #ffffff;
   --foreground: #1e293b;
 
-  /* Brand Colors */
-  --solar-blue: #0284c7;
-  --solar-blue-dark: #0369a1;
-  --solar-gold: #f59e0b;
-  --solar-green: #10b981;
+  /* Brand Colors - Maltese Red & Gold */
+  --maltese-red: #ce1126;
+  --maltese-red-dark: #a00e1d;
+  --maltese-red-light: #e63946;
+  --maltese-gold: #fbbf24;
+  --maltese-gold-dark: #f59e0b;
+  --maltese-amber: #ff6b35;
+  --maltese-cream: #fef3c7;
+
+  /* Legacy aliases for compatibility */
+  --solar-blue: #ce1126;
+  --solar-blue-dark: #a00e1d;
+  --solar-gold: #fbbf24;
+  --solar-green: #f59e0b;
 
   /* Neutral Grays */
   --gray-50: #f8fafc;
@@ -20,13 +29,13 @@
 }
 
 @theme inline {
-  /* Colors */
+  /* Colors - Maltese Theme */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: var(--solar-blue);
-  --color-primary-dark: var(--solar-blue-dark);
-  --color-secondary: var(--solar-gold);
-  --color-accent: var(--solar-green);
+  --color-primary: var(--maltese-red);
+  --color-primary-dark: var(--maltese-red-dark);
+  --color-secondary: var(--maltese-gold);
+  --color-accent: var(--maltese-amber);
 
   /* Typography */
   --font-sans: var(--font-geist-sans);
