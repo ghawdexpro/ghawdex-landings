@@ -9,22 +9,22 @@ import MagneticButton from '@/components/MagneticButton';
 const easing = [0.16, 1, 0.3, 1] as const;
 
 // 15 kWp system calculations (Malta three-phase max)
-// ~15 kWp × 2,850 sun hours/year = 42,750 kWh/year
-// 70% self-consumption × €0.16/kWh average rate
-// Monthly average: ~€400 savings
+// 15 kWp × 1.5 MWh/kWp = 23 MWh/year (22,500 kWh)
+// €150/MWh feed-in tariff = €3,450/year income
+// Monthly average: €287.50
 const cumulativeSavingsData = [
-  { month: 'Jan', savings: 280, cumulative: 280 },
-  { month: 'Feb', savings: 310, cumulative: 590 },
-  { month: 'Mar', savings: 380, cumulative: 970 },
-  { month: 'Apr', savings: 420, cumulative: 1390 },
-  { month: 'May', savings: 480, cumulative: 1870 },
-  { month: 'Jun', savings: 520, cumulative: 2390 },
-  { month: 'Jul', savings: 550, cumulative: 2940 },
-  { month: 'Aug', savings: 530, cumulative: 3470 },
-  { month: 'Sep', savings: 450, cumulative: 3920 },
-  { month: 'Oct', savings: 390, cumulative: 4310 },
-  { month: 'Nov', savings: 320, cumulative: 4630 },
-  { month: 'Dec', savings: 290, cumulative: 4920 },
+  { month: 'Jan', savings: 196, cumulative: 196 },
+  { month: 'Feb', savings: 217, cumulative: 413 },
+  { month: 'Mar', savings: 266, cumulative: 679 },
+  { month: 'Apr', savings: 295, cumulative: 974 },
+  { month: 'May', savings: 337, cumulative: 1311 },
+  { month: 'Jun', savings: 365, cumulative: 1676 },
+  { month: 'Jul', savings: 386, cumulative: 2062 },
+  { month: 'Aug', savings: 372, cumulative: 2434 },
+  { month: 'Sep', savings: 316, cumulative: 2750 },
+  { month: 'Oct', savings: 273, cumulative: 3023 },
+  { month: 'Nov', savings: 224, cumulative: 3247 },
+  { month: 'Dec', savings: 203, cumulative: 3450 },
 ];
 
 const yearlyComparison = [
@@ -37,14 +37,14 @@ const yearlyComparison = [
 
 const paybackTimeline = [
   { year: 0, value: -12000, label: 'Investment' },
-  { year: 1, value: -7500 },
-  { year: 2, value: -3000 },
-  { year: 3, value: 1500 },
-  { year: 4, value: 6000, label: 'Break Even!' },
-  { year: 5, value: 10500 },
-  { year: 10, value: 35000 },
-  { year: 15, value: 59500 },
-  { year: 20, value: 84000, label: '€84k Saved!' },
+  { year: 1, value: -8550 },
+  { year: 2, value: -5100 },
+  { year: 3, value: -1650 },
+  { year: 4, value: 1800, label: 'Break Even!' },
+  { year: 5, value: 5250 },
+  { year: 10, value: 22500 },
+  { year: 15, value: 39750 },
+  { year: 20, value: 57000, label: '€57k Saved!' },
 ];
 
 export default function AnalysisPage() {
@@ -89,7 +89,7 @@ export default function AnalysisPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-amber-600 to-yellow-500 blur-3xl opacity-30"></div>
             <div className="relative glass-card p-8 sm:p-12 glow-red-strong">
               <AnimatedCounter
-                target={98400}
+                target={69000}
                 prefix="€"
                 duration={2500}
                 className="text-7xl sm:text-8xl lg:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-green-500"
@@ -104,7 +104,7 @@ export default function AnalysisPage() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-2xl sm:text-3xl text-gray-300 mb-4"
           >
-            That's <span className="text-amber-400 font-bold">€410/month</span> average savings
+            That's <span className="text-amber-400 font-bold">€287.50/month</span> average income
           </motion.p>
 
           <motion.p
@@ -123,8 +123,8 @@ export default function AnalysisPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {[
-              { label: 'Monthly Savings', value: 410, suffix: '/mo', icon: TrendingUp, color: 'from-green-500 to-emerald-500' },
-              { label: 'Yearly Savings', value: 4920, suffix: '/yr', icon: Calendar, color: 'from-amber-500 to-yellow-500' },
+              { label: 'Monthly Income', value: 287.5, suffix: '/mo', icon: TrendingUp, color: 'from-green-500 to-emerald-500' },
+              { label: 'Yearly Income', value: 3450, suffix: '/yr', icon: Calendar, color: 'from-amber-500 to-yellow-500' },
               { label: 'System Size', value: 15, suffix: ' kWp', icon: Zap, color: 'from-red-500 to-orange-500' },
             ].map((stat, index) => (
               <motion.div
@@ -142,7 +142,7 @@ export default function AnalysisPage() {
                 <h3 className="text-gray-400 text-sm font-medium mb-2">{stat.label}</h3>
                 <AnimatedCounter
                   target={stat.value}
-                  prefix="€"
+                  prefix={stat.label.includes('Size') ? '' : '€'}
                   suffix={stat.suffix}
                   duration={2000}
                   className="text-4xl sm:text-5xl font-bold text-white"
@@ -167,7 +167,7 @@ export default function AnalysisPage() {
               Watch Your Savings Grow
             </h2>
             <p className="text-xl text-gray-400">
-              Your money accumulates month after month - <span className="text-green-400 font-bold">€4,920 in Year 1</span>
+              Your income accumulates month after month - <span className="text-green-400 font-bold">€3,450 in Year 1</span>
             </p>
           </motion.div>
 
@@ -208,7 +208,7 @@ export default function AnalysisPage() {
             <div className="mt-6 text-center">
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-full">
                 <TrendingUp className="w-5 h-5 text-green-400" />
-                <span className="text-green-400 font-semibold text-lg">Year 1 Total: €4,920 saved!</span>
+                <span className="text-green-400 font-semibold text-lg">Year 1 Total: €3,450 income!</span>
               </div>
               <p className="text-gray-400 text-sm mt-4">Based on 15 kWp system with seasonal production variation</p>
             </div>
@@ -272,7 +272,7 @@ export default function AnalysisPage() {
 
             <div className="mt-6 text-center">
               <p className="text-gray-400 text-sm mb-2">After 20 years:</p>
-              <p className="text-3xl font-bold text-green-400">€84,000 in total savings!</p>
+              <p className="text-3xl font-bold text-green-400">€57,000 in total income!</p>
             </div>
           </motion.div>
         </div>
@@ -285,7 +285,7 @@ export default function AnalysisPage() {
             {[
               { label: 'System Size', value: '15 kWp' },
               { label: 'Panels Needed', value: '19 × 800W' },
-              { label: 'Annual Production', value: '~21,000 kWh' },
+              { label: 'Annual Production', value: '23 MWh' },
               { label: 'Sun Hours/Year', value: '2,850 hrs' },
             ].map((detail, index) => (
               <motion.div
@@ -323,7 +323,7 @@ export default function AnalysisPage() {
             </h2>
 
             <p className="text-xl text-gray-400 mb-8">
-              Join 500+ Malta homeowners saving with 15 kWp systems - €410/month average
+              Join 500+ Malta homeowners earning with 15 kWp systems - €287.50/month average
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
