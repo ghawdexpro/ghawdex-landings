@@ -51,9 +51,14 @@ export default function AnimatedCounter({
     requestAnimationFrame(animate);
   }, [isInView, target, duration]);
 
+  // Format number with dots as thousand separators (European style)
+  const formatNumber = (num: number) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  };
+
   return (
     <div ref={ref} className={className}>
-      {prefix}{count}{suffix}
+      {prefix}{formatNumber(count)}{suffix}
     </div>
   );
 }
