@@ -8,9 +8,9 @@ const easing = [0.16, 1, 0.3, 1] as const; // easeOutExpo
 
 export default function ValueProposition() {
   return (
-    <section className="relative section-padding overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-amber-50/30 to-white"></div>
+    <section className="relative section-padding overflow-hidden bg-[#1a1a1a]">
+      {/* Subtle gradient background - Dark theme */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1f1f1f] via-[#1a1a1a] to-[#1a1a1a]"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section header */}
@@ -21,10 +21,10 @@ export default function ValueProposition() {
           transition={{ duration: 0.8, ease: easing }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
             Why Choose Ghawdex?
           </h2>
-          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl sm:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Cutting-edge technology meets professional expertise
           </p>
         </motion.div>
@@ -41,43 +41,43 @@ export default function ValueProposition() {
             className="lg:col-span-7 lg:row-span-2 group"
           >
             <div className="relative h-full min-h-[400px] p-10 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
-              {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-amber-500/10 to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              {/* Animated gradient background - Dark theme */}
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-amber-500/5 to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              {/* Floating gradient orb */}
+              {/* Floating gradient orb - Enhanced for dark */}
               <motion.div
-                className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-red-500 to-amber-600 rounded-full opacity-20 blur-3xl"
+                className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-red-500 to-amber-600 rounded-full opacity-10 blur-3xl group-hover:opacity-15"
                 animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
               />
 
               <div className="relative z-10 h-full flex flex-col justify-between">
                 {/* Icon */}
-                <div className="inline-flex p-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-600 mb-6 shadow-xl w-fit">
+                <div className="inline-flex p-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-600 mb-6 shadow-xl glow-red w-fit">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
 
                 {/* Content */}
                 <div>
-                  <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-amber-600">
+                  <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-500">
                       9 Days
                     </span>
                     <br />
                     Installation
                   </h3>
-                  <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+                  <p className="text-xl text-gray-400 leading-relaxed max-w-lg">
                     From initial consultation to final activation—your solar system up and running in record time. Industry-leading speed without compromising quality.
                   </p>
                 </div>
 
                 {/* Stats mini-badges */}
                 <div className="flex gap-4 mt-8">
-                  <div className="px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-white/40">
-                    <span className="text-sm font-semibold text-gray-700">⚡ Fast-Track Process</span>
+                  <div className="px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
+                    <span className="text-sm font-semibold text-gray-300">⚡ Fast-Track Process</span>
                   </div>
-                  <div className="px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-white/40">
-                    <span className="text-sm font-semibold text-gray-700">✓ Full Turnkey</span>
+                  <div className="px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
+                    <span className="text-sm font-semibold text-gray-300">✓ Full Turnkey</span>
                   </div>
                 </div>
               </div>
@@ -94,19 +94,19 @@ export default function ValueProposition() {
           >
             <div className="relative h-full min-h-[180px] p-8 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
               <motion.div
-                className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-yellow-400 to-amber-600 rounded-full opacity-20 blur-2xl"
+                className="absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br from-yellow-400 to-amber-600 rounded-full opacity-10 blur-2xl group-hover:opacity-15"
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
               />
 
               <div className="relative z-10">
-                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 mb-4 shadow-lg">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 mb-4 shadow-lg glow-amber">
                   <Sparkles className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <h3 className="text-2xl font-bold text-white mb-3">
                   Real-Time Analysis
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-400 leading-relaxed">
                   Advanced app analyzes your building using Google Earth and Solar API for precise planning.
                 </p>
               </div>
@@ -123,19 +123,19 @@ export default function ValueProposition() {
           >
             <div className="relative h-full min-h-[180px] p-8 overflow-hidden rounded-3xl glass-card hover:shadow-glow transition-all duration-500 transform-gpu hover:scale-[1.02]">
               <motion.div
-                className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-red-400 to-orange-600 rounded-full opacity-20 blur-2xl"
+                className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-red-400 to-orange-600 rounded-full opacity-10 blur-2xl group-hover:opacity-15"
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
               />
 
               <div className="relative z-10">
-                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 mb-4 shadow-lg">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 mb-4 shadow-lg glow-red">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <h3 className="text-2xl font-bold text-white mb-3">
                   Professional Excellence
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-400 leading-relaxed">
                   Certified installers, premium equipment, and comprehensive warranties. Your investment is protected.
                 </p>
               </div>
@@ -144,19 +144,19 @@ export default function ValueProposition() {
 
         </div>
 
-        {/* Stats Section - Full width glassmorphism card */}
+        {/* Stats Section - Full width glassmorphism card - Dark theme */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3, ease: easing }}
-          className="relative overflow-hidden rounded-3xl"
+          className="relative overflow-hidden rounded-3xl glow-red-strong"
         >
           {/* Gradient background with animation */}
-          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-amber-600 to-yellow-500 bg-[length:200%_auto] animate-gradient-x"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-amber-600 to-yellow-500 bg-[length:200%_auto] animate-gradient-x opacity-90"></div>
 
           {/* Glass overlay */}
-          <div className="relative backdrop-blur-xl bg-white/10 border border-white/20 p-10 sm:p-14">
+          <div className="relative backdrop-blur-xl bg-black/20 border border-white/10 p-10 sm:p-14">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-12">
 
               <div className="text-center group">
@@ -169,7 +169,7 @@ export default function ValueProposition() {
                 <div className="text-lg text-amber-100 font-medium">Installations Completed</div>
               </div>
 
-              <div className="text-center border-x-0 sm:border-x border-white/30 group">
+              <div className="text-center border-x-0 sm:border-x border-white/20 group">
                 <AnimatedCounter
                   target={9}
                   duration={1500}

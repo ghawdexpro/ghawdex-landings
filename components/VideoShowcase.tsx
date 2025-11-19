@@ -27,14 +27,14 @@ export default function VideoShowcase() {
   }, [currentVideoIndex]);
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      {/* Animated background elements */}
+    <section className="relative w-full bg-gradient-to-b from-[#1a1a1a] via-[#1f1f1f] to-[#1a1a1a] overflow-hidden">
+      {/* Animated background elements - Enhanced for dark */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-red-600/20 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-red-600/15 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
             duration: 4,
@@ -43,10 +43,10 @@ export default function VideoShowcase() {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-amber-600/20 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-amber-600/15 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
             duration: 5,

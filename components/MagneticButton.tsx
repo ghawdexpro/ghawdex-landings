@@ -44,7 +44,7 @@ export default function MagneticButton({
         onMouseLeave={handleMouseLeave}
         animate={{ x: position.x, y: position.y }}
         transition={{ type: "spring", stiffness: 150, damping: 15 }}
-        className="group relative inline-flex items-center gap-3 px-8 py-5 overflow-hidden rounded-full bg-gradient-to-r from-red-600 to-amber-600 text-white font-semibold text-lg shadow-2xl shadow-red-500/25 transform-gpu"
+        className="group relative inline-flex items-center gap-3 px-8 py-5 overflow-hidden rounded-full bg-gradient-to-r from-red-600 to-amber-600 text-white font-semibold text-lg shadow-2xl shadow-red-500/25 hover:shadow-[0_0_40px_rgba(206,17,38,0.4)] transition-shadow duration-300 transform-gpu"
       >
         {/* Animated gradient overlay on hover */}
         <motion.div
@@ -66,7 +66,7 @@ export default function MagneticButton({
     );
   }
 
-  // Secondary variant
+  // Secondary variant - Dark theme
   return (
     <motion.a
       ref={buttonRef}
@@ -77,11 +77,11 @@ export default function MagneticButton({
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15 }}
-      className="group relative inline-flex items-center gap-3 px-8 py-5 overflow-hidden rounded-full bg-white text-gray-900 font-semibold text-lg border-2 border-gray-200 hover:border-red-500 shadow-md transition-colors duration-300 transform-gpu"
+      className="group relative inline-flex items-center gap-3 px-8 py-5 overflow-hidden rounded-full bg-white/5 backdrop-blur-sm text-white font-semibold text-lg border-2 border-white/10 hover:border-amber-500/50 shadow-md hover:shadow-[0_0_24px_rgba(251,191,36,0.25)] transition-all duration-300 transform-gpu"
     >
       {/* Gradient background on hover */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-red-50 to-amber-50"
+        className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-amber-500/10"
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.3 }}

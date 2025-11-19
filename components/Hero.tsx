@@ -10,21 +10,21 @@ const easing = [0.16, 1, 0.3, 1] as const; // easeOutExpo
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-      {/* Enhanced gradient mesh background */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1a1a1a]">
+      {/* Enhanced gradient mesh background - Dark theme */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated gradient mesh - 7 layers for depth */}
+        {/* Animated gradient mesh - 7 layers with glowing red/amber accents */}
         <motion.div
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(at 27% 37%, hsla(355, 87%, 47%, 0.3) 0px, transparent 50%),
-              radial-gradient(at 97% 21%, hsla(45, 93%, 57%, 0.25) 0px, transparent 50%),
-              radial-gradient(at 52% 99%, hsla(15, 100%, 60%, 0.2) 0px, transparent 50%),
-              radial-gradient(at 10% 29%, hsla(355, 84%, 44%, 0.2) 0px, transparent 50%),
-              radial-gradient(at 97% 96%, hsla(45, 95%, 55%, 0.3) 0px, transparent 50%),
-              radial-gradient(at 33% 50%, hsla(20, 100%, 63%, 0.2) 0px, transparent 50%),
-              radial-gradient(at 79% 53%, hsla(355, 75%, 54%, 0.2) 0px, transparent 50%)
+              radial-gradient(at 27% 37%, hsla(355, 87%, 47%, 0.15) 0px, transparent 50%),
+              radial-gradient(at 97% 21%, hsla(45, 93%, 57%, 0.12) 0px, transparent 50%),
+              radial-gradient(at 52% 99%, hsla(15, 100%, 60%, 0.1) 0px, transparent 50%),
+              radial-gradient(at 10% 29%, hsla(355, 84%, 44%, 0.12) 0px, transparent 50%),
+              radial-gradient(at 97% 96%, hsla(45, 95%, 55%, 0.15) 0px, transparent 50%),
+              radial-gradient(at 33% 50%, hsla(20, 100%, 63%, 0.1) 0px, transparent 50%),
+              radial-gradient(at 79% 53%, hsla(355, 75%, 54%, 0.12) 0px, transparent 50%)
             `
           }}
           animate={{
@@ -39,7 +39,7 @@ export default function Hero() {
 
         {/* Grain texture overlay for premium feel */}
         <div
-          className="absolute inset-0 opacity-[0.015]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")'
           }}
@@ -72,11 +72,11 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2, ease: easing }}
             className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 leading-[0.95]"
           >
-            <span className="inline-block text-gray-900">
+            <span className="inline-block text-white">
               Solar Installation in{' '}
             </span>
             <span className="inline-block relative">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-amber-500 to-yellow-500 bg-[length:200%_auto] animate-gradient-x">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-yellow-400 bg-[length:200%_auto] animate-gradient-x">
                 9 Days
               </span>
               {/* Shimmer effect */}
@@ -97,7 +97,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl sm:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
             Professional solar energy solutions with cutting-edge technology.
             From real-time building analysis to complete installation—fast, reliable, and expertly done.
@@ -133,18 +133,18 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-gray-500"
+            className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-gray-400"
           >
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_8px_rgba(251,191,36,0.6)]"></div>
               <span>100% Installation Guarantee</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_8px_rgba(251,191,36,0.6)]"></div>
               <span>Real-Time Analysis</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_8px_rgba(251,191,36,0.6)]"></div>
               <span>Professional Team</span>
             </div>
           </motion.div>
@@ -157,8 +157,8 @@ export default function Hero() {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-gray-400 rounded-full"></div>
+        <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
+          <div className="w-1 h-3 bg-gray-600 rounded-full"></div>
         </div>
       </motion.div>
     </section>

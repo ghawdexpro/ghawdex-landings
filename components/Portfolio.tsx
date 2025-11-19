@@ -139,8 +139,8 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           {/* Enhanced gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
-          {/* Category badge with glassmorphism */}
-          <div className="absolute top-4 right-4 px-4 py-2 backdrop-blur-md bg-white/20 border border-white/30 rounded-full text-xs font-semibold text-white shadow-lg">
+          {/* Category badge with glassmorphism - Dark theme */}
+          <div className="absolute top-4 right-4 px-4 py-2 backdrop-blur-md bg-black/30 border border-white/20 rounded-full text-xs font-semibold text-white shadow-lg">
             {project.category}
           </div>
 
@@ -160,24 +160,24 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           />
         </div>
 
-        {/* Project info with glassmorphism */}
-        <div className="relative p-6 backdrop-blur-sm bg-white/60 border-t border-white/40">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors">
+        {/* Project info with glassmorphism - Dark theme */}
+        <div className="relative p-6 backdrop-blur-sm bg-black/40 border-t border-white/10">
+          <h3 className="text-xl font-bold text-white mb-4 group-hover:text-amber-400 transition-colors">
             {project.title}
           </h3>
 
           <div className="grid grid-cols-3 gap-4 text-sm">
-            <div className="text-center p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/40">
-              <div className="text-gray-500 text-xs mb-1 font-medium">Capacity</div>
-              <div className="font-bold text-gray-900">{project.capacity}</div>
+            <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+              <div className="text-gray-400 text-xs mb-1 font-medium">Capacity</div>
+              <div className="font-bold text-white">{project.capacity}</div>
             </div>
-            <div className="text-center p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/40">
-              <div className="text-gray-500 text-xs mb-1 font-medium">Panels</div>
-              <div className="font-bold text-gray-900">{project.panels}</div>
+            <div className="text-center p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+              <div className="text-gray-400 text-xs mb-1 font-medium">Panels</div>
+              <div className="font-bold text-white">{project.panels}</div>
             </div>
-            <div className="text-center p-3 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 backdrop-blur-sm border border-amber-400/40">
-              <div className="text-amber-700 text-xs mb-1 font-medium">Time</div>
-              <div className="font-bold text-amber-600">{project.completion}</div>
+            <div className="text-center p-3 rounded-xl bg-gradient-to-br from-amber-500/10 to-yellow-500/10 backdrop-blur-sm border border-amber-400/20">
+              <div className="text-amber-400 text-xs mb-1 font-medium">Time</div>
+              <div className="font-bold text-amber-400">{project.completion}</div>
             </div>
           </div>
         </div>
@@ -191,9 +191,9 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="relative section-padding overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-red-50/20 to-white"></div>
+    <section id="portfolio" className="relative section-padding overflow-hidden bg-[#1a1a1a]">
+      {/* Subtle gradient background - Dark theme */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1f1f1f] via-[#1a1a1a] to-[#1a1a1a]"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section header */}
@@ -209,16 +209,16 @@ export default function Portfolio() {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: easing }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-md bg-amber-500/10 border border-amber-500/20 text-amber-700 rounded-full text-sm font-semibold mb-8 shadow-lg"
+            className="inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-md bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-full text-sm font-semibold mb-8 shadow-lg glow-amber"
           >
             <Award className="w-4 h-4" />
             <span>Our Work</span>
           </motion.div>
 
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
             Proven Track Record
           </h2>
-          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl sm:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Quality installations delivered across Malta—<br className="hidden sm:block" />
             from residential homes to industrial facilities
           </p>
@@ -239,7 +239,7 @@ export default function Portfolio() {
           transition={{ duration: 0.8, delay: 0.4, ease: easing }}
           className="mt-20 text-center"
         >
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-400 mb-8">
             Ready to see your property transformed with solar energy?
           </p>
           <MagneticButton

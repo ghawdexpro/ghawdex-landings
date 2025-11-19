@@ -31,18 +31,18 @@ const appFeatures = [
 
 export default function AppShowcase() {
   return (
-    <section className="relative section-padding overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-amber-50 to-yellow-50"></div>
+    <section className="relative section-padding overflow-hidden bg-[#1a1a1a]">
+      {/* Animated gradient background - Dark theme */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#1a1a1a]"></div>
 
-      {/* Floating gradient orbs */}
+      {/* Floating gradient orbs - Enhanced for dark */}
       <motion.div
-        className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-red-400/30 to-amber-600/30 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-red-400/15 to-amber-600/15 rounded-full blur-3xl"
         animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-amber-400/20 to-yellow-600/20 rounded-full blur-3xl"
+        className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-amber-400/10 to-yellow-600/10 rounded-full blur-3xl"
         animate={{ x: [0, -30, 0], y: [0, 50, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -62,7 +62,7 @@ export default function AppShowcase() {
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: easing }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-md bg-red-500/10 border border-red-500/20 text-red-700 rounded-full text-sm font-semibold mb-8 shadow-lg"
+              className="inline-flex items-center gap-2 px-5 py-2.5 backdrop-blur-md bg-red-500/10 border border-red-500/30 text-red-400 rounded-full text-sm font-semibold mb-8 shadow-lg glow-red"
             >
               <motion.div
                 animate={{ rotate: [0, 360] }}
@@ -73,14 +73,14 @@ export default function AppShowcase() {
               <span>Powered by Advanced Technology</span>
             </motion.div>
 
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
               See Your Solar Potential in{' '}
-              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-amber-600 to-yellow-500 bg-[length:200%_auto] animate-gradient-x">
+              <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-500 to-yellow-400 bg-[length:200%_auto] animate-gradient-x">
                 Real-Time
               </span>
             </h2>
 
-            <p className="text-xl sm:text-2xl text-gray-600 mb-10 leading-relaxed">
+            <p className="text-xl sm:text-2xl text-gray-400 mb-10 leading-relaxed">
               Advanced analysis using Google Earth and Solar API—instant, accurate estimates before we visit.
             </p>
 
@@ -97,17 +97,17 @@ export default function AppShowcase() {
                   className="group flex items-start gap-4 p-5 glass-card hover:shadow-glow transition-all duration-300 transform-gpu"
                 >
                   <motion.div
-                    className="flex-shrink-0 p-3 bg-gradient-to-br from-red-600 to-amber-600 rounded-xl shadow-lg"
+                    className="flex-shrink-0 p-3 bg-gradient-to-br from-red-600 to-amber-600 rounded-xl shadow-lg glow-red"
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6, ease: easing }}
                   >
                     <feature.icon className="w-5 h-5 text-white" />
                   </motion.div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1 group-hover:text-red-600 transition-colors">
+                    <h3 className="font-bold text-white mb-1 group-hover:text-amber-400 transition-colors">
                       {feature.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                    <p className="text-sm text-gray-400 leading-relaxed">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -148,34 +148,34 @@ export default function AppShowcase() {
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               />
 
-              {/* App interface mockup with glassmorphism */}
-              <div className="relative z-10 h-full m-6 backdrop-blur-xl bg-white/90 rounded-2xl p-6 shadow-2xl border border-white/40">
+              {/* App interface mockup with glassmorphism - Dark theme */}
+              <div className="relative z-10 h-full m-6 backdrop-blur-xl bg-black/60 rounded-2xl p-6 shadow-2xl border border-white/10">
                 {/* Mockup header */}
-                <div className="flex items-center justify-between mb-5 pb-4 border-b border-gray-200/60">
+                <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/10">
                   <div className="flex items-center gap-3">
                     <motion.div
-                      className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-600 rounded-xl flex items-center justify-center shadow-lg"
+                      className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-600 rounded-xl flex items-center justify-center shadow-lg glow-red"
                       animate={{ rotate: [0, 360] }}
                       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                     >
                       <Satellite className="w-5 h-5 text-white" />
                     </motion.div>
-                    <span className="font-bold text-gray-900">Solar Analysis</span>
+                    <span className="font-bold text-white">Solar Analysis</span>
                   </div>
                   <div className="flex gap-2">
                     <motion.div
-                      className="w-3 h-3 bg-emerald-500 rounded-full"
+                      className="w-3 h-3 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.6)]"
                       animate={{ opacity: [1, 0.5, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
-                    <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-amber-500 rounded-full shadow-[0_0_6px_rgba(251,191,36,0.5)]"></div>
+                    <div className="w-3 h-3 bg-red-500 rounded-full shadow-[0_0_6px_rgba(239,68,68,0.5)]"></div>
                   </div>
                 </div>
 
                 {/* Mockup content - Satellite view */}
-                <div className="mb-4 bg-gradient-to-br from-red-100 via-amber-100 to-yellow-100 rounded-xl aspect-video flex items-center justify-center overflow-hidden relative shadow-inner">
-                  <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
+                <div className="mb-4 bg-gradient-to-br from-red-900/30 via-amber-900/30 to-yellow-900/30 rounded-xl aspect-video flex items-center justify-center overflow-hidden relative shadow-inner border border-white/5">
+                  <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
 
                   {/* Pulsing location marker */}
                   <motion.div
@@ -183,8 +183,8 @@ export default function AppShowcase() {
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    <MapPin className="w-14 h-14 text-red-600 mx-auto mb-2 drop-shadow-lg" />
-                    <p className="text-sm text-gray-700 font-semibold">Building Analysis</p>
+                    <MapPin className="w-14 h-14 text-red-500 mx-auto mb-2 drop-shadow-lg" />
+                    <p className="text-sm text-gray-300 font-semibold">Building Analysis</p>
                   </motion.div>
 
                   {/* Animated scan lines */}
@@ -215,23 +215,23 @@ export default function AppShowcase() {
                   />
                 </div>
 
-                {/* Stats display with glassmorphism */}
+                {/* Stats display with glassmorphism - Dark theme */}
                 <div className="grid grid-cols-2 gap-3">
                   <motion.div
-                    className="p-4 backdrop-blur-sm bg-red-500/10 border border-red-500/20 rounded-xl"
+                    className="p-4 backdrop-blur-sm bg-red-500/10 border border-red-500/30 rounded-xl"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="text-xs text-gray-600 mb-1 font-medium">Solar Potential</div>
-                    <div className="text-2xl font-bold text-red-600">98%</div>
+                    <div className="text-xs text-gray-400 mb-1 font-medium">Solar Potential</div>
+                    <div className="text-2xl font-bold text-red-400">98%</div>
                   </motion.div>
                   <motion.div
-                    className="p-4 backdrop-blur-sm bg-amber-500/10 border border-amber-500/20 rounded-xl"
+                    className="p-4 backdrop-blur-sm bg-amber-500/10 border border-amber-500/30 rounded-xl"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="text-xs text-gray-600 mb-1 font-medium">Est. Savings</div>
-                    <div className="text-2xl font-bold text-amber-600">€450/mo</div>
+                    <div className="text-xs text-gray-400 mb-1 font-medium">Est. Savings</div>
+                    <div className="text-2xl font-bold text-amber-400">€450/mo</div>
                   </motion.div>
                 </div>
               </div>
