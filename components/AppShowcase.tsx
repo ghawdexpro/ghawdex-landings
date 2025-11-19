@@ -78,9 +78,14 @@ export default function AppShowcase() {
               ))}
             </div>
 
-            <button className="px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <a
+              href="https://solar-scan-ge-production-d63a.up.railway.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
               Try Our Analysis Tool
-            </button>
+            </a>
           </motion.div>
 
           {/* Right side - Visual mockup */}

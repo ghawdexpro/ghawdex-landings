@@ -53,27 +53,27 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="/about" className="text-gray-400 hover:text-white transition-colors duration-300">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="/services" className="text-gray-400 hover:text-white transition-colors duration-300">
                   Our Services
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="#portfolio" className="text-gray-400 hover:text-white transition-colors duration-300">
                   Portfolio
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="https://solar-scan-ge-production-d63a.up.railway.app/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
                   Analysis Tool
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a href="/faq" className="text-gray-400 hover:text-white transition-colors duration-300">
                   FAQ
                 </a>
               </li>
@@ -125,13 +125,13 @@ export default function Footer() {
               © {currentYear} Ghawdex. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a href="/privacy" className="text-gray-400 hover:text-white transition-colors duration-300">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a href="/terms" className="text-gray-400 hover:text-white transition-colors duration-300">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a href="/cookies" className="text-gray-400 hover:text-white transition-colors duration-300">
                 Cookie Policy
               </a>
             </div>

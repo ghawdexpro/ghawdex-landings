@@ -85,13 +85,21 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <button className="group px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <a
+              href="https://solar-scan-ge-production-d63a.up.railway.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
               Get Your Free Analysis
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-full border-2 border-gray-200 hover:border-sky-600 transition-all duration-300 shadow-md">
+            </a>
+            <a
+              href="#portfolio"
+              className="px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-full border-2 border-gray-200 hover:border-sky-600 transition-all duration-300 shadow-md"
+            >
               View Our Work
-            </button>
+            </a>
           </motion.div>
 
           {/* Trust indicators */}

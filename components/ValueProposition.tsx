@@ -95,7 +95,7 @@ export default function ValueProposition() {
             <div className="text-sky-100">Installations Completed</div>
           </div>
           <div className="text-center border-x-0 sm:border-x border-sky-400">
-            <div className="text-4xl sm:text-5xl font-bold text-white mb-2">14</div>
+            <div className="text-4xl sm:text-5xl font-bold text-white mb-2">9</div>
             <div className="text-sky-100">Days Average Install</div>
           </div>
           <div className="text-center">

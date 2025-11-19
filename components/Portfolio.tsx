@@ -14,7 +14,7 @@ const projects = [
     image: '/projects/r-rabat-1.jpg',
     capacity: '8 kW',
     panels: '10 panels',
-    completion: '12 days'
+    completion: '5 days'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const projects = [
     image: '/projects/gharb-1.jpg',
     capacity: '7 kW',
     panels: '8 panels',
-    completion: '13 days'
+    completion: '8 days'
   },
   {
     id: 3,
@@ -33,8 +33,8 @@ const projects = [
     icon: Home,
     image: '/projects/x-xewkja-1.jpg',
     capacity: '5 kW',
-    panels: '6 panels',
-    completion: '14 days'
+    panels: '7 panels',
+    completion: '11 days'
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ const projects = [
     image: '/projects/fontana-4.jpg',
     capacity: '5 kW',
     panels: '6 panels',
-    completion: '11 days'
+    completion: '4 days'
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ const projects = [
     image: '/projects/ta-kercem-2.jpg',
     capacity: '7 kW',
     panels: '8 panels',
-    completion: '13 days'
+    completion: '8 days'
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section className="section-padding bg-white">
+    <section id="portfolio" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section header */}
         <motion.div
@@ -166,9 +166,14 @@ export default function Portfolio() {
           <p className="text-gray-600 mb-6">
             Ready to see your property transformed with solar energy?
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+          <a
+            href="https://solar-scan-ge-production-d63a.up.railway.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-700 hover:to-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
             Start Your Project
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>
