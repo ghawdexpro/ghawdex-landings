@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import FacebookPixel from "@/components/FacebookPixel";
+import TimeTracker from "@/components/TimeTracker";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -65,6 +66,7 @@ export default function RootLayout({
       >
         {children}
         <WhatsAppButton />
+        <TimeTracker />
       </body>
     </html>
   );

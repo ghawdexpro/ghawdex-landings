@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
+import { trackVideoPlay, trackVideoComplete } from '@/lib/analytics';
 
 const videos = [
   '/projects/installation-showcase.mp4',
@@ -13,13 +14,23 @@ export default function VideoShowcase() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Helper function to get friendly video name for tracking
+  const getVideoName = (index: number) => {
+    return `Installation Video ${index + 1}`;
+  };
+
   const handleVideoEnd = () => {
+    // Track video completion
+    trackVideoComplete(getVideoName(currentVideoIndex));
     setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
   };
 
   useEffect(() => {
     const videoElement = videoRef.current;
     if (videoElement) {
+      // Track video play event
+      trackVideoPlay(getVideoName(currentVideoIndex));
+
       videoElement.play().catch(() => {
         // Autoplay might be blocked, that's okay
       });

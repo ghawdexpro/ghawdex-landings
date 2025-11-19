@@ -147,6 +147,155 @@ All components use Framer Motion with `'use client'` directive.
 
 **Important:** Videos must be in `/public/projects/` and referenced without `/public` prefix.
 
+### Analytics & Tracking
+
+**Overview:** Comprehensive event tracking using Google Analytics 4 (GA4) and Facebook Pixel to monitor user engagement, conversions, and behavior.
+
+**Core Files:**
+- `lib/analytics.ts` - Helper functions for all tracking events
+- `components/GoogleAnalytics.tsx` - GA4 initialization component
+- `components/FacebookPixel.tsx` - Facebook Pixel initialization component
+- `components/TimeTracker.tsx` - Invisible component for time-on-site tracking
+- `.env.local` - Analytics configuration (gitignored)
+- `.env.local.example` - Template for environment variables
+
+**Environment Variables Required:**
+```bash
+NEXT_PUBLIC_GA4_ID=G-XXXXXXXXXX          # Google Analytics 4 ID
+NEXT_PUBLIC_FB_PIXEL_ID=XXXXXXXXXXXXXXX  # Facebook Pixel ID
+```
+
+**Tracking Events Implemented:**
+
+1. **User Engagement:**
+   - Phone clicks (`trackPhoneClick`)
+   - WhatsApp clicks (`trackWhatsAppClick`)
+   - Email clicks (`trackEmailClick`)
+   - Social media clicks (`trackSocialClick`)
+   - External link clicks (`trackExternalLinkClick`)
+
+2. **Conversion Events:**
+   - CTA button clicks (`trackCTAClick`) - includes button text and location
+   - Analysis page views (`trackAnalysisPageView`)
+
+3. **Content Engagement:**
+   - Video play events (`trackVideoPlay`) - tracks when each video starts
+   - Video completion events (`trackVideoComplete`) - tracks when videos finish
+   - Scroll depth tracking (`trackScrollDepth`) - milestones at 25%, 50%, 75%, 100%
+   - Time on site tracking (`trackTimeOnSite`) - intervals at 30s, 1min, 3min, 5min, 10min
+
+**Implementation Locations:**
+
+| Event Type | Implemented In | Details |
+|------------|----------------|---------|
+| Phone clicks | `Footer.tsx`, `analysis/page.tsx` | Phone number links |
+| WhatsApp clicks | `WhatsAppButton.tsx`, `Footer.tsx` | WhatsApp chat button |
+| Email clicks | `Footer.tsx` | Email contact link |
+| Social clicks | `Footer.tsx` | Facebook, Instagram links |
+| CTA clicks | `Hero.tsx`, `analysis/page.tsx` | All call-to-action buttons |
+| Video tracking | `VideoShowcase.tsx` | Auto-play and completion tracking |
+| Scroll depth | `page.tsx` | Main page scroll tracking |
+| Time on site | `layout.tsx` via `TimeTracker.tsx` | Global site-wide tracking |
+| Analysis views | `analysis/page.tsx` | Page load tracking |
+
+**How Tracking Works:**
+
+All tracking uses the dual-tracking pattern from `lib/analytics.ts`:
+```tsx
+import { trackPhoneClick, trackCTAClick } from '@/lib/analytics';
+
+// Simple event
+<a onClick={trackPhoneClick}>Call Us</a>
+
+// Parameterized event
+<button onClick={() => trackCTAClick('Get Free Quote', 'Hero Section')}>
+  Get Quote
+</button>
+```
+
+**Video Tracking Example:**
+```tsx
+// In VideoShowcase.tsx
+useEffect(() => {
+  trackVideoPlay(getVideoName(currentVideoIndex)); // Track when video starts
+  videoElement.play();
+}, [currentVideoIndex]);
+
+const handleVideoEnd = () => {
+  trackVideoComplete(getVideoName(currentVideoIndex)); // Track completion
+  setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+};
+```
+
+**Scroll Depth Tracking:**
+- Implemented in `app/page.tsx` (client component)
+- Debounced scroll events (100ms)
+- Tracks once per milestone using `useRef` to prevent duplicates
+- Milestones: 25%, 50%, 75%, 100%
+
+**Time on Site Tracking:**
+- Implemented via `TimeTracker.tsx` component in layout
+- Checks every 5 seconds
+- Tracks milestones: 30s, 60s, 180s, 300s, 600s
+- Runs globally on all pages
+
+**Adding New Tracking Events:**
+
+1. **Define event in `lib/analytics.ts`:**
+   ```tsx
+   export const trackCustomEvent = (param: string) => {
+     trackEvent('custom_event', {
+       event_category: 'engagement',
+       event_label: param,
+       value: 1,
+     });
+   };
+   ```
+
+2. **Import and use in component:**
+   ```tsx
+   import { trackCustomEvent } from '@/lib/analytics';
+
+   <button onClick={() => trackCustomEvent('Button Clicked')}>
+     Click Me
+   </button>
+   ```
+
+**Event Structure:**
+```typescript
+trackEvent(eventName: string, {
+  event_category: 'engagement' | 'conversion',
+  event_label: string,        // Descriptive label
+  value: number,              // Importance score (1-3)
+  [key: string]: any,         // Custom parameters
+});
+```
+
+**Testing Analytics:**
+
+1. **Development Testing:**
+   ```bash
+   npm run dev
+   # Open browser console
+   # Check for gtag() and fbq() calls in Network tab
+   ```
+
+2. **GA4 Real-Time Reports:**
+   - Visit Google Analytics 4 dashboard
+   - Go to Reports → Real-time
+   - Perform actions on site and verify events appear
+
+3. **Facebook Events Manager:**
+   - Visit Facebook Events Manager
+   - Check "Test Events" tab with your browser session
+   - Verify events are being received
+
+**Privacy & GDPR Considerations:**
+- Analytics scripts load from Google/Facebook CDNs
+- No personally identifiable information (PII) is tracked
+- User IP addresses are processed by GA4 and Facebook
+- Consider adding cookie consent banner for EU compliance
+
 ## Key File Locations
 
 **SEO & Metadata:** `app/layout.tsx` (lines 16-45)

@@ -92,14 +92,64 @@ If CLI deployment doesn't work:
 
 ## Environment Variables
 
-This project doesn't require environment variables for the landing page.
-If you add contact forms or integrations later, you can set them via:
+### Required for Analytics Tracking
+
+The project uses Google Analytics 4 and Facebook Pixel for tracking user engagement and conversions. These require environment variables to be configured.
+
+**Local Development (`.env.local`):**
+
+Create a `.env.local` file in the project root (already gitignored):
 
 ```bash
-railway variables set KEY=value
+NEXT_PUBLIC_GA4_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_FB_PIXEL_ID=XXXXXXXXXXXXXXX
 ```
 
-Or via the Railway Dashboard → Variables section.
+**Production Deployment (Railway):**
+
+Set environment variables via Railway CLI:
+
+```bash
+railway variables set NEXT_PUBLIC_GA4_ID=G-2SZNR72JNF
+railway variables set NEXT_PUBLIC_FB_PIXEL_ID=809814008544994
+```
+
+Or via Railway Dashboard:
+1. Open your project at https://railway.app
+2. Go to **Variables** tab
+3. Click **+ New Variable**
+4. Add both variables:
+   - `NEXT_PUBLIC_GA4_ID` = Your Google Analytics 4 Measurement ID
+   - `NEXT_PUBLIC_FB_PIXEL_ID` = Your Facebook Pixel ID
+
+**Important Notes:**
+- Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser (required for client-side tracking)
+- After adding variables, Railway will automatically redeploy your application
+- `.env.local` is gitignored and should NEVER be committed to version control
+- Use `.env.local.example` as a template (contains placeholder values)
+
+### How to Get Your Tracking IDs
+
+**Google Analytics 4:**
+1. Go to https://analytics.google.com
+2. Create a new GA4 property (or use existing)
+3. Go to **Admin** → **Data Streams** → **Web**
+4. Copy the **Measurement ID** (format: `G-XXXXXXXXXX`)
+
+**Facebook Pixel:**
+1. Go to https://business.facebook.com/events_manager
+2. Create a new Pixel (or use existing)
+3. Go to **Settings**
+4. Copy the **Pixel ID** (15-digit number)
+
+### Analytics Events Tracked
+
+Once configured, the following events are automatically tracked:
+- **User Engagement:** Phone clicks, WhatsApp clicks, Email clicks, Social media clicks
+- **Conversions:** CTA button clicks, Analysis page views
+- **Content:** Video plays/completions, Scroll depth (25%, 50%, 75%, 100%), Time on site (30s, 1min, 3min, 5min, 10min)
+
+See `CLAUDE.md` → "Analytics & Tracking" section for detailed implementation.
 
 ## Verify Deployment
 
@@ -160,12 +210,16 @@ Railway Project: ghawdex-landing
 
 ## Next Steps After Deployment
 
-1. **Add your logo**: Upload to `/public/logo/`
-2. **Add project photos**: Upload to `/public/projects/`
-3. **Update components** to use real images instead of placeholders
-4. **Test performance**: Use Google PageSpeed Insights
-5. **Set up analytics**: Add Google Analytics or similar
-6. **Configure contact forms**: When ready to collect leads
+1. **Configure Analytics** (if not already done):
+   - Set `NEXT_PUBLIC_GA4_ID` and `NEXT_PUBLIC_FB_PIXEL_ID` in Railway variables
+   - Verify events are being tracked in GA4 Real-Time reports
+   - Test Facebook Pixel in Events Manager
+2. **Add your logo**: Upload to `/public/logo/`
+3. **Add project photos**: Upload to `/public/projects/`
+4. **Update components** to use real images instead of placeholders
+5. **Test performance**: Use Google PageSpeed Insights
+6. **Monitor analytics**: Check user engagement and conversion events
+7. **Configure contact forms**: When ready to collect leads
 
 ## Support
 
