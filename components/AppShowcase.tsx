@@ -119,8 +119,7 @@ export default function AppShowcase() {
               rel="noopener noreferrer"
               variant="primary"
             >
-              <span>Try Our Analysis Tool</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Try Our Analysis Tool
             </MagneticButton>
           </motion.div>
 

@@ -248,8 +248,7 @@ export default function Portfolio() {
             rel="noopener noreferrer"
             variant="primary"
           >
-            <span>Start Your Project</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            Start Your Project
           </MagneticButton>
         </motion.div>
       </div>
