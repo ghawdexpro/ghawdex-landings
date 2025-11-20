@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Hero from '@/components/Hero';
 import VideoShowcase from '@/components/VideoShowcase';
+import Services from '@/components/Services';
 import ValueProposition from '@/components/ValueProposition';
 import AppShowcase from '@/components/AppShowcase';
 import Portfolio from '@/components/Portfolio';
@@ -52,6 +53,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <VideoShowcase />
+      <Services />
       <ValueProposition />
       <AppShowcase />
       <Portfolio />
