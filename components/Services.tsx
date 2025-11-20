@@ -53,6 +53,13 @@ const services = [
   },
   {
     id: 7,
+    title: 'EMS - Energy Management Systems',
+    description: 'Smart monitoring and optimization for maximum energy efficiency',
+    image: '/services ghawdex/EMS - energy management.jpg',
+    category: 'Smart Tech',
+  },
+  {
+    id: 8,
     title: 'Indoor Farming Systems',
     description: 'Solar-powered sustainable agriculture and climate control',
     image: '/services ghawdex/indoor farming.jpg',
