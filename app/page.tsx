@@ -54,9 +54,9 @@ export default function Home() {
       <Hero />
       <VideoShowcase />
       <Services />
-      <ValueProposition />
-      <AppShowcase />
       <Portfolio />
+      <AppShowcase />
+      <ValueProposition />
       <Footer />
     </main>
   );

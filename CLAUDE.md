@@ -54,7 +54,7 @@ components/
 ```
 
 **Page Flow:**
-`Hero` → `VideoShowcase` → `Services` → `ValueProposition` → `AppShowcase` → `Portfolio` → `Footer`
+`Hero` → `VideoShowcase` → `Services` → `Portfolio` → `AppShowcase` → `ValueProposition` → `Footer`
 
 ### Analysis Page (`/analysis`)
 
