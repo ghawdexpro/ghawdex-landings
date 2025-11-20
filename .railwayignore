@@ -1,0 +1,13 @@
+# Exclude original MOV files
+*.MOV
+*.mov
+
+# Exclude other large files
+public/projects/*.MOV
+public/projects/*.mov
+
+# Exclude development files
+.git
+node_modules
+.next
+.env*
