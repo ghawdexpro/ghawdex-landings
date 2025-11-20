@@ -1,41 +1,49 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { trackVideoPlay, trackVideoComplete } from '@/lib/analytics';
 
 const videos = [
-  '/projects/installation-showcase.mp4',
-  '/projects/installation-video-2.mp4',
-  '/projects/installation-video-3.mp4',
+  '/projects/video-1.mp4',
+  '/projects/video-2.mp4',
+  '/projects/video-3.mp4',
 ];
 
 export default function VideoShowcase() {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   // Helper function to get friendly video name for tracking
   const getVideoName = (index: number) => {
     return `Installation Video ${index + 1}`;
   };
 
-  const handleVideoEnd = () => {
-    // Track video completion
-    trackVideoComplete(getVideoName(currentVideoIndex));
-    setCurrentVideoIndex((prev) => (prev + 1) % videos.length);
+  const handleVideoPlay = (index: number) => {
+    trackVideoPlay(getVideoName(index));
   };
 
-  useEffect(() => {
-    const videoElement = videoRef.current;
+  const handleVideoEnd = (index: number) => {
+    trackVideoComplete(getVideoName(index));
+    // Loop the video
+    const videoElement = videoRefs.current[index];
     if (videoElement) {
-      // Track video play event
-      trackVideoPlay(getVideoName(currentVideoIndex));
-
+      videoElement.currentTime = 0;
       videoElement.play().catch(() => {
         // Autoplay might be blocked, that's okay
       });
     }
-  }, [currentVideoIndex]);
+  };
+
+  useEffect(() => {
+    // Auto-play all videos on mount
+    videoRefs.current.forEach((videoElement, index) => {
+      if (videoElement) {
+        videoElement.play().catch(() => {
+          // Autoplay might be blocked, that's okay
+        });
+      }
+    });
+  }, []);
 
   return (
     <section className="relative w-full bg-gradient-to-b from-[#1a1a1a] via-[#1f1f1f] to-[#1a1a1a] overflow-hidden">
@@ -94,48 +102,89 @@ export default function VideoShowcase() {
           </p>
         </motion.div>
 
-        {/* Video Container */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative rounded-2xl overflow-hidden shadow-2xl"
-        >
-          {/* Video */}
-          <video
-            ref={videoRef}
-            key={currentVideoIndex}
-            autoPlay
-            muted
-            onEnded={handleVideoEnd}
-            playsInline
-            aria-label="Ghawdex solar installation showcase video"
-            className="w-full h-auto block bg-black"
-            style={{ aspectRatio: '16 / 9' }}
-          >
-            <source src={videos[currentVideoIndex]} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        {/* Video Grid - Custom layout for portrait + landscape */}
+        <div className="flex flex-col gap-6">
+          {/* Top Row: Two portrait videos side by side (desktop only) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Video 1 - Portrait */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl bg-black"
+            >
+              <video
+                ref={(el) => { videoRefs.current[0] = el; }}
+                autoPlay
+                muted
+                loop
+                playsInline
+                onPlay={() => handleVideoPlay(0)}
+                onEnded={() => handleVideoEnd(0)}
+                aria-label="Ghawdex solar installation showcase video 1"
+                className="w-full h-auto block"
+                style={{ aspectRatio: '9 / 16' }}
+              >
+                <source src={videos[0]} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl" />
+            </motion.div>
 
-          {/* Optional gradient overlay on edges for sophistication */}
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl" />
-
-          {/* Video indicators */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-            {videos.map((_, index) => (
-              <motion.div
-                key={index}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentVideoIndex ? 'w-8 bg-amber-500' : 'w-2 bg-gray-500'
-                }`}
-                animate={{
-                  opacity: index === currentVideoIndex ? 1 : 0.5,
-                }}
-              />
-            ))}
+            {/* Video 2 - Portrait */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl bg-black"
+            >
+              <video
+                ref={(el) => { videoRefs.current[1] = el; }}
+                autoPlay
+                muted
+                loop
+                playsInline
+                onPlay={() => handleVideoPlay(1)}
+                onEnded={() => handleVideoEnd(1)}
+                aria-label="Ghawdex solar installation showcase video 2"
+                className="w-full h-auto block"
+                style={{ aspectRatio: '9 / 16' }}
+              >
+                <source src={videos[1]} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl" />
+            </motion.div>
           </div>
-        </motion.div>
+
+          {/* Bottom Row: One landscape video full-width */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative rounded-2xl overflow-hidden shadow-2xl bg-black"
+          >
+            <video
+              ref={(el) => { videoRefs.current[2] = el; }}
+              autoPlay
+              muted
+              loop
+              playsInline
+              onPlay={() => handleVideoPlay(2)}
+              onEnded={() => handleVideoEnd(2)}
+              aria-label="Ghawdex solar installation showcase video 3"
+              className="w-full h-auto block"
+              style={{ aspectRatio: '16 / 9' }}
+            >
+              <source src={videos[2]} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl" />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
