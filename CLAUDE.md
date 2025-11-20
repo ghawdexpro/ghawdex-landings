@@ -45,6 +45,7 @@ app/
 components/
 ├── Hero.tsx            # Full-screen hero with logo
 ├── VideoShowcase.tsx   # Auto-cycling video gallery (3 videos)
+├── Services.tsx        # Service offerings showcase (7 services)
 ├── ValueProposition.tsx # Feature grid + stats
 ├── AppShowcase.tsx     # App mockup showcase
 ├── Portfolio.tsx       # Project gallery
@@ -53,7 +54,7 @@ components/
 ```
 
 **Page Flow:**
-`Hero` → `VideoShowcase` → `ValueProposition` → `AppShowcase` → `Portfolio` → `Footer`
+`Hero` → `VideoShowcase` → `Services` → `ValueProposition` → `AppShowcase` → `Portfolio` → `Footer`
 
 ### Analysis Page (`/analysis`)
 
@@ -111,6 +112,51 @@ Configuration location: `app/globals.css`
 
 **To change brand colors:** Edit CSS variables in `globals.css` `:root` section.
 
+### Services Section (`components/Services.tsx`)
+
+**Purpose:** Showcase 7 core service offerings with image-based cards.
+
+**Design Style:**
+- Dark theme matching Portfolio section (`bg-[#1a1a1a]`)
+- Glassmorphism effects with backdrop blur
+- 3D tilt animation on hover (same as Portfolio cards)
+- Shimmer effect that sweeps across on hover
+- Gradient overlay animations
+- Amber accent colors and badges
+
+**Service List (7 total):**
+1. **Solar Panel Installation** - Premium photovoltaic systems with 14-day guarantee
+2. **Energy Storage Solutions** - Advanced battery systems
+3. **Solar Pergolas** - Outdoor structures with integrated panels
+4. **Custom Roof Frames** - Structural support for roofs unable to bear weight
+5. **Liquid Membrane** - Waterproofing solutions
+6. **Electrical Services** - Complete electrical installations
+7. **Indoor Farming Systems** - Solar-powered sustainable agriculture
+
+**Service Images:**
+- Location: `/public/services ghawdex/`
+- Format: JPG/jpg files
+- Images referenced without `/public` prefix
+- Each service has dedicated image showing real project work
+
+**Component Features:**
+- Grid layout: 1 column (mobile) → 2 columns (tablet) → 3 columns (desktop)
+- Category badges: Energy, Storage, Outdoor, Construction, Electrical, Innovation
+- MagneticButton CTA at bottom linking to WhatsApp
+- Same animation patterns as Portfolio (3D tilt, shimmer, gradient overlays)
+
+**Editing Services:**
+To modify services, edit the `services` array in `components/Services.tsx:11-61`:
+```tsx
+{
+  id: 1,
+  title: 'Service Name',
+  description: 'Brief description',
+  image: '/services ghawdex/filename.JPG',
+  category: 'Category',
+}
+```
+
 ### Animation Patterns
 
 All components use Framer Motion with `'use client'` directive.
@@ -126,6 +172,9 @@ All components use Framer Motion with `'use client'` directive.
 ```
 
 **Staggered animations:** Use `delay: index * 0.1`
+
+**3D Tilt Effect (Portfolio & Services):**
+Uses Framer Motion's `useMotionValue`, `useSpring`, and `useTransform` for smooth 3D card tilting on mouse movement. See `Portfolio.tsx:76-109` or `Services.tsx:49-82` for implementation.
 
 **Continuous animations:** See `Hero.tsx` background elements for looping patterns
 
@@ -312,6 +361,7 @@ trackEvent(eventName: string, {
 - Logo: `/public/logo/Ghawdex engineering logo.svg`
 - Used in: `Hero.tsx:47-51`, `Footer.tsx`
 - Project images: `/public/projects/`
+- Service images: `/public/services ghawdex/` (7 service photos)
 
 **Videos:**
 - Installation showcases: `/public/projects/installation-*.mp4`
@@ -352,12 +402,38 @@ Edit `app/globals.css`:
 
 Colors auto-update throughout site via Tailwind theme.
 
+### Adding or Editing Services
+
+**To add a new service:**
+1. Add service image to `/public/services ghawdex/`
+2. Edit `components/Services.tsx` and add to `services` array (lines 11-61):
+   ```tsx
+   {
+     id: 8,
+     title: 'New Service Name',
+     description: 'Brief description of the service',
+     image: '/services ghawdex/new-service.jpg',
+     category: 'Category Name',
+   }
+   ```
+
+**To edit existing service:**
+- Modify the corresponding object in the `services` array
+- Update title, description, image path, or category as needed
+
+**Service image requirements:**
+- Format: JPG or jpg
+- Location: `/public/services ghawdex/`
+- Reference in code: `/services ghawdex/filename.JPG` (no `/public` prefix)
+- Aspect ratio: 4:3 works best with the card design
+
 ### Adding New Section Component
 
 1. Create `components/NewSection.tsx` with `'use client'` directive
 2. Import and add to `app/page.tsx` in desired order
-3. Follow existing animation patterns
+3. Follow existing animation patterns (see Services.tsx or Portfolio.tsx for examples)
 4. Use responsive padding: `section-padding` class or `py-20`
+5. For dark sections, use `bg-[#1a1a1a]` to match Portfolio/Services theme
 
 ## Deployment
 
