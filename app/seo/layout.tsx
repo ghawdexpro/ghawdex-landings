@@ -15,6 +15,7 @@ export default function SEOLayout({
 }) {
   return (
     <html lang="en">
+      <head />
       <body className={inter.className}>
         <GoogleAnalytics />
         <Suspense fallback={null}>

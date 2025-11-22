@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Add locality pages (68 pages)
   const localityPages = localities.map(locality => ({
-    url: `${baseUrl}/solar-panels-${locality.slug}`,
+    url: `${baseUrl}/seo/solar-panels-${locality.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.9,
@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const service of services) {
     for (const locality of localities) {
       serviceLocalityPages.push({
-        url: `${baseUrl}/${service.slug}-${locality.slug}`,
+        url: `${baseUrl}/seo/${service.slug}-${locality.slug}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
@@ -59,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const size of systemSizes) {
     for (const locality of localities) {
       systemSizePages.push({
-        url: `${baseUrl}/${size.slug}-solar-system-${locality.slug}`,
+        url: `${baseUrl}/seo/${size.slug}-solar-system-${locality.slug}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
