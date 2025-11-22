@@ -1,9 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
 import { localities } from '@/lib/data/localities'
 import { systemSizes } from '@/lib/data/system-sizes'
-import { generatePageContent, saveGeneratedContent } from '@/lib/content/generator'
 
 interface PageProps {
   params: Promise<{ size: string; locality: string }>
@@ -24,23 +22,18 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const supabase = await createClient()
   const { size: sizeSlug, locality: localitySlug } = await params
 
-  const [{ data: systemSize }, { data: locality }] = await Promise.all([
-    supabase.from('system_sizes').select('*').eq('slug', sizeSlug).single(),
-    supabase.from('localities').select('*').eq('slug', localitySlug).single(),
-  ])
+  const systemSize = systemSizes.find(s => s.slug === sizeSlug)
+  const locality = localities.find(l => l.slug === localitySlug)
 
   if (!systemSize || !locality) return {}
 
-  const grantAmount = locality.gozo_premium
-    ? systemSize.grant_amount_gozo
-    : systemSize.grant_amount_malta
+  const grantAmount = 10200
 
   return {
     title: `${systemSize.kw}kW Solar System in ${locality.name} | €${grantAmount} Grant`,
-    description: `Install a ${systemSize.kw}kW solar system in ${locality.name}. €${grantAmount} grant available. Save €${systemSize.annual_savings_eur}/year. ${systemSize.typical_panel_count} panels. Free quote.`,
+    description: `Install a ${systemSize.kw}kW solar system in ${locality.name}. €${grantAmount} grant available. Save €3,450/year. Professional installation. Free quote.`,
     openGraph: {
       title: `${systemSize.kw}kW Solar System - ${locality.name}`,
       url: `https://www.ghawdex.pro/${sizeSlug}-solar-system-${localitySlug}`,
@@ -52,25 +45,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function SystemSizeLocalityPage({ params }: PageProps) {
-  const supabase = await createClient()
   const { size: sizeSlug, locality: localitySlug } = await params
 
-  const [{ data: systemSize }, { data: locality }] = await Promise.all([
-    supabase.from('system_sizes').select('*').eq('slug', sizeSlug).single(),
-    supabase.from('localities').select('*').eq('slug', localitySlug).single(),
-  ])
+  const systemSize = systemSizes.find(s => s.slug === sizeSlug)
+  const locality = localities.find(l => l.slug === localitySlug)
 
   if (!systemSize || !locality) notFound()
 
-  const grantAmount = locality.gozo_premium
-    ? systemSize.grant_amount_gozo
-    : systemSize.grant_amount_malta
-
-  const totalCost = locality.gozo_premium
-    ? systemSize.avg_cost_gozo
-    : systemSize.avg_cost_malta
-
-  const costAfterGrant = totalCost - grantAmount
+  const grantAmount = 10200
+  const totalCost = systemSize.kw * 1500 // Approx €1,500 per kW
+  const costAfterGrant = Math.max(0, totalCost - grantAmount)
+  const annualSavings = systemSize.kw * 230 // Approx €230 per kW per year
+  const panelCount = Math.ceil(systemSize.kw / 0.4) // Approx 400W panels
+  const paybackYears = Math.ceil(costAfterGrant / annualSavings)
 
   return (
     <div className="min-h-screen">
@@ -80,7 +67,7 @@ export default async function SystemSizeLocalityPage({ params }: PageProps) {
             {systemSize.kw}kW Solar System in {locality.name}
           </h1>
           <p className="text-xl mb-8">
-            Complete solar installation with {systemSize.typical_panel_count} panels
+            Complete solar installation with {panelCount} panels
           </p>
           <div className="grid md:grid-cols-4 gap-4">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
@@ -97,13 +84,13 @@ export default async function SystemSizeLocalityPage({ params }: PageProps) {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-3xl font-bold text-amber-300">
-                €{systemSize.annual_savings_eur.toLocaleString()}
+                €{annualSavings.toLocaleString()}
               </div>
               <div className="text-sm mt-2">Annual Savings</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-3xl font-bold text-amber-300">
-                {systemSize.payback_years}yr
+                {paybackYears}yr
               </div>
               <div className="text-sm mt-2">Payback Period</div>
             </div>
@@ -118,19 +105,19 @@ export default async function SystemSizeLocalityPage({ params }: PageProps) {
             <div className="space-y-4">
               <div className="flex justify-between border-b pb-2">
                 <span className="font-semibold">Panel Count:</span>
-                <span>{systemSize.typical_panel_count} panels</span>
+                <span>{panelCount} panels</span>
               </div>
               <div className="flex justify-between border-b pb-2">
-                <span className="font-semibold">Roof Space:</span>
-                <span>{systemSize.typical_roof_space_sqm}m²</span>
+                <span className="font-semibold">System Size:</span>
+                <span>{systemSize.kw} kW</span>
               </div>
               <div className="flex justify-between border-b pb-2">
                 <span className="font-semibold">Annual Production:</span>
-                <span>{systemSize.annual_production_kwh.toLocaleString()} kWh</span>
+                <span>{(systemSize.kw * 1500).toLocaleString()} kWh</span>
               </div>
               <div className="flex justify-between border-b pb-2">
                 <span className="font-semibold">CO₂ Offset:</span>
-                <span>{systemSize.co2_offset_kg.toLocaleString()} kg/year</span>
+                <span>{(systemSize.kw * 900).toLocaleString()} kg/year</span>
               </div>
             </div>
           </div>
@@ -152,7 +139,7 @@ export default async function SystemSizeLocalityPage({ params }: PageProps) {
               </div>
               <div className="mt-6 p-4 bg-amber-100 rounded-lg">
                 <p className="text-sm text-center">
-                  <strong>20-Year Profit:</strong> €{((systemSize.annual_savings_eur * 20) - costAfterGrant).toLocaleString()}
+                  <strong>20-Year Profit:</strong> €{((annualSavings * 20) - costAfterGrant).toLocaleString()}
                 </p>
               </div>
             </div>

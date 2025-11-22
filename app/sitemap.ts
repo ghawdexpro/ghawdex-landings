@@ -1,45 +1,78 @@
 import { MetadataRoute } from 'next'
-import { createClient } from '@/lib/supabase/server'
+import { localities } from '@/lib/data/localities'
+import { services } from '@/lib/data/services'
+import { systemSizes } from '@/lib/data/system-sizes'
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const supabase = await createClient()
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.ghawdex.pro'
 
-  // Fetch all generated pages from database
-  const { data: pages } = await supabase
-    .from('generated_pages')
-    .select('url_path, last_generated')
-    .order('url_path')
-
-  const sitemapEntries: MetadataRoute.Sitemap = []
-
-  // Static pages
-  sitemapEntries.push(
+  const routes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: 'monthly',
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/analysis`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    }
-  )
-
-  // Dynamic SEO pages
-  for (const page of pages || []) {
-    sitemapEntries.push({
-      url: `${baseUrl}${page.url_path}`,
-      lastModified: new Date(page.last_generated),
       changeFrequency: 'monthly',
-      priority: 0.8,
-    })
+      priority: 0.7,
+    },
+  ]
+
+  // Add locality pages (68 pages)
+  const localityPages = localities.map(locality => ({
+    url: `${baseUrl}/solar-panels-${locality.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
+  }))
+
+  // Add service-locality pages (1,020 pages)
+  const serviceLocalityPages = []
+  for (const service of services) {
+    for (const locality of localities) {
+      serviceLocalityPages.push({
+        url: `${baseUrl}/${service.slug}-${locality.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      })
+    }
   }
 
-  return sitemapEntries
+  // Add system size pages (816 pages)
+  const systemSizePages = []
+  for (const size of systemSizes) {
+    for (const locality of localities) {
+      systemSizePages.push({
+        url: `${baseUrl}/${size.slug}-solar-system-${locality.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      })
+    }
+  }
+
+  return [
+    ...routes,
+    ...localityPages,
+    ...serviceLocalityPages,
+    ...systemSizePages,
+  ]
 }
 
 // Revalidate sitemap every day

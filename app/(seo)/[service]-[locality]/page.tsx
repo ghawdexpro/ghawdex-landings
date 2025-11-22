@@ -1,9 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
 import { localities } from '@/lib/data/localities'
 import { services } from '@/lib/data/services'
-import { generatePageContent, saveGeneratedContent } from '@/lib/content/generator'
 
 interface PageProps {
   params: Promise<{ service: string; locality: string }>
@@ -24,19 +22,16 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const supabase = await createClient()
   const { service: serviceSlug, locality: localitySlug } = await params
 
-  const [{ data: service }, { data: locality }] = await Promise.all([
-    supabase.from('services').select('*').eq('slug', serviceSlug).single(),
-    supabase.from('localities').select('*').eq('slug', localitySlug).single(),
-  ])
+  const service = services.find(s => s.slug === serviceSlug)
+  const locality = localities.find(l => l.slug === localitySlug)
 
   if (!service || !locality) return {}
 
   return {
     title: `${service.name} in ${locality.name} | Ghawdex Solar Malta`,
-    description: `Professional ${service.name.toLowerCase()} in ${locality.name}. ${service.install_time_days}-day installation. ${service.grant_available ? 'Grant available.' : ''} Free quote today.`,
+    description: `Professional ${service.name.toLowerCase()} in ${locality.name}. 14-day installation. Government grants available. Free quote today.`,
     openGraph: {
       title: `${service.name} - ${locality.name}, Malta`,
       description: `Expert ${service.name.toLowerCase()} services in ${locality.name}`,
@@ -49,116 +44,75 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ServiceLocalityPage({ params }: PageProps) {
-  const supabase = await createClient()
   const { service: serviceSlug, locality: localitySlug } = await params
 
-  const [{ data: service }, { data: locality }] = await Promise.all([
-    supabase.from('services').select('*').eq('slug', serviceSlug).single(),
-    supabase.from('localities').select('*').eq('slug', localitySlug).single(),
-  ])
+  const service = services.find(s => s.slug === serviceSlug)
+  const locality = localities.find(l => l.slug === localitySlug)
 
   if (!service || !locality) notFound()
-
-  // Fetch or generate content
-  const pageContent = await supabase
-    .from('generated_pages')
-    .select('content_json')
-    .eq('url_path', `/${serviceSlug}-${localitySlug}`)
-    .single()
-
-  let content: any
-
-  if (!pageContent.data) {
-    const generated = await generatePageContent('service-locality', {
-      locality: {
-        name: locality.name,
-        slug: locality.slug,
-        sunHours: locality.avg_sun_hours_year,
-        population: locality.population,
-        grantAmount: locality.gozo_premium ? 11550 : 10200,
-        region: locality.region,
-      },
-      service: {
-        name: service.name,
-        description: service.description,
-        avgCost: (service.avg_cost_min + service.avg_cost_max) / 2,
-      },
-    })
-
-    await saveGeneratedContent(
-      supabase,
-      `/${serviceSlug}-${localitySlug}`,
-      'service-locality',
-      generated,
-      { localityId: locality.id, serviceId: service.id }
-    )
-
-    content = generated
-  } else {
-    content = pageContent.data.content_json as any
-  }
 
   return (
     <div className="min-h-screen">
       <section className="py-20 px-4 bg-gradient-to-br from-sky-900 to-blue-800 text-white">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-5xl font-bold mb-6">
-            {content.h1 || `${service.name} in ${locality.name}`}
+            {service.name} in {locality.name}
           </h1>
           <p className="text-xl mb-8">
-            {content.heroContent}
+            Professional {service.name.toLowerCase()} services in {locality.name}, Malta.
+            Fast installation, competitive prices, government grants available.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-3xl font-bold text-amber-300">
-                {service.install_time_days} Days
+                14 Days
               </div>
               <div className="text-sm mt-2">Installation Time</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-3xl font-bold text-amber-300">
-                €{service.avg_cost_min.toLocaleString()}+
+                €10,200
               </div>
-              <div className="text-sm mt-2">Starting Price</div>
+              <div className="text-sm mt-2">Max Grant Available</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <div className="text-3xl font-bold text-amber-300">
-                {service.grant_available ? '✓' : '—'}
+                ✓
               </div>
-              <div className="text-sm mt-2">Grant Available</div>
+              <div className="text-sm mt-2">Professional Installation</div>
             </div>
           </div>
         </div>
       </section>
 
       <section className="py-20 px-4 max-w-5xl mx-auto">
-        <div
-          className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: content.mainContent }}
-        />
-      </section>
+        <div className="prose prose-lg max-w-none">
+          <h2>Professional {service.name} in {locality.name}</h2>
+          <p>
+            Ghawdex Solar provides expert {service.name.toLowerCase()} services in {locality.name} and throughout Malta.
+            With our 14-day installation guarantee and comprehensive government grant support, we make solar energy
+            accessible and affordable.
+          </p>
 
-      {content.faqItems && content.faqItems.length > 0 && (
-        <section className="py-20 px-4 bg-gray-50">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              FAQ - {service.name} in {locality.name}
-            </h2>
-            <div className="space-y-4">
-              {content.faqItems.map((faq: any, index: number) => (
-                <details key={index} className="bg-white rounded-lg p-6 shadow-sm">
-                  <summary className="font-semibold text-lg cursor-pointer">
-                    {faq.question}
-                  </summary>
-                  <p className="mt-4 text-gray-700">
-                    {faq.answer}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+          <h3>Why Choose Ghawdex for {service.name}?</h3>
+          <ul>
+            <li>14-day installation guarantee</li>
+            <li>Government grant assistance</li>
+            <li>Professional certified installers</li>
+            <li>Premium quality equipment</li>
+            <li>Full warranty and support</li>
+          </ul>
+
+          <h3>{service.name} Process</h3>
+          <ol>
+            <li><strong>Free Consultation:</strong> We assess your property and requirements</li>
+            <li><strong>Custom Design:</strong> Tailored solution designed for your needs</li>
+            <li><strong>Grant Application:</strong> We handle all government grant paperwork</li>
+            <li><strong>Professional Installation:</strong> Expert installation completed within 14 days</li>
+            <li><strong>Testing & Support:</strong> Full system testing and ongoing support</li>
+          </ol>
+        </div>
+      </section>
 
       <section className="py-16 bg-sky-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
